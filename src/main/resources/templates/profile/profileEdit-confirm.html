@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+<title>プロフィール編集</title>
+</head>
+<body>
+	<p sec:authorize="isAuthenticated()" class="auth-status">
+		ログインユーザー：<span sec:authentication="principal.username"></span><br> ロール：<span sec:authentication="principal.authorities"></span>
+	</p>
+	<h2>プロフィール編集確認</h2>
+	<table class="confirm-table" th:object="${profileEditForm}">
+		<tr>
+			<td class="guide">【プロフィール名】</td>
+			<td th:text="*{profile_name}"></td>
+		</tr>
+		<tr>
+			<td class="guide">【生年月日】</td>
+			<td th:text="*{birth_year} + '年'"></td>
+		</tr>
+		<tr>
+			<td class="guide">【生年月日】</td>
+			<td th:text="*{birth_month} + '月'"></td>
+		</tr>
+		<tr>
+			<td class="guide">【生年月日】</td>
+			<td th:text="*{birth_day} + '日'"></td>
+		</tr>
+		<tr>
+			<td class="guide">【 貯蓄目標】</td>
+			<td th:text="*{saving_goal}"></td>
+		</tr>
+		<tr>
+			<td class="guide">【 欲しいもの】</td>
+			<td th:text="*{what_i_want}"></td>
+		</tr>
+		<tr>
+			<td class="guide">【 コメント】</td>
+			<td th:text="*{comments}"></td>
+		</tr>
+	</table>
+	<br>
+
+	<form th:action="@{/profile/update-execute}" method="POST" th:object="${profileEditForm}">
+		<input type="hidden" th:field="*{profile_id}">
+		<input type="hidden" th:field="*{user_id}">
+		<input type="hidden" th:field="*{profile_name}">
+		<input type="hidden" th:field="*{birth_year}">
+		<input type="hidden" th:field="*{birth_month}">
+		<input type="hidden" th:field="*{birth_day}">
+		<input type="hidden" th:field="*{saving_goal}">
+		<input type="hidden" th:field="*{what_i_want}">
+		<input type="hidden" th:field="*{comments}">
+		<input type="submit" value="更新実行" class="btn">
+	</form>
+
+	<form th:action="@{/profile/update}" method="POST" th:object="${profileEditForm}">
+		<input type="hidden" th:field="*{profile_name}">
+		<input type="hidden" th:field="*{birth_year}">
+		<input type="hidden" th:field="*{birth_month}">
+		<input type="hidden" th:field="*{birth_day}">
+		<input type="hidden" th:field="*{saving_goal}">
+		<input type="hidden" th:field="*{what_i_want}">
+		<input type="hidden" th:field="*{comments}">
+		<input type="submit" value="もどる" class="btn">
+	</form>
+
+	<!-- マイページ画面	-->
+	<form th:action="@{/mypage/user-show-mypage}" method="GET">
+		<input type="submit" value="My Page" class="btn">
+	</form>
+</body>
+</html>

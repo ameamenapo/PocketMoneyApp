@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+<title>完了</title>
+</head>
+<body>
+	<p sec:authorize="isAuthenticated()" class="auth-status">
+		ログインユーザー：<span sec:authentication="principal.username"></span><br>		
+	    ロール：<span sec:authentication="principal.authorities"></span>
+	</p>
+		
+	<h2>完了</h2>
+
+	<br>
+	<p>処理が完了しました。</p>
+	<p th:text="${msg}"></p>
+	<br>
+	<br>
+
+	<!-- お手伝い登録画面  -->
+	<a th:href="@{/user-show-help-list}">お手伝い追加登録</a>
+	<!-- お手伝い一覧-->
+	<a th:href="@{/user-show-myhelp-list}">Myリスト</a>
+	<a th:href="@{/user-top}">トップメニュー</a>
+
+	<div class="logoutBtn-wrapper">
+		<form th:action="@{/logout}" method="post">
+			<p><button class="logoutBtn" type="submit">ログアウト</button></p>
+		</form>
+	</div>
+</body>
+</html>

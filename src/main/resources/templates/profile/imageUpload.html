@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+<title>画像アップロード</title>
+</head>
+<body>
+	<p sec:authorize="isAuthenticated()" class="auth-status">
+		ログインユーザー：<span sec:authentication="principal.username"></span><br> ロール：<span sec:authentication="principal.authorities"></span>
+	</p>
+	<h2>画像アップロード</h2>
+	<form th:action="@{/images/upload}" method="post" enctype="multipart/form-data">
+
+		<input type="hidden" name="image_id" th:value="${userImage.image_id}">
+		<input type="hidden" name="user_id" th:value="${userImage.user_id}">
+		<input type="hidden" name="image_data" th:value="${userImage.image_data}">
+		<input type="hidden" name="image_name" th:value="${userImage.image_name}">
+		<input type="hidden" name="image_type" th:value="${userImage.image_type}">
+		<input type="file" name="file" required>
+		<button type="submit">アップロード</button>
+	</form>
+
+	<hr>
+	<p th:text="${msg}"></p>
+	<h3>My Page用画像</h3>
+	<div th:object="${UserImageForm}">
+
+		<div th:if="${imageSrc} == null">No Image</div>
+		<div th:if="${imageSrc} != null">
+			<img th:src="${imageSrc}" alt="アップロード画像" width="300">
+		</div>
+
+	</div>
+	<!-- マイページ画面	-->
+	<form th:action="@{/mypage/user-show-mypage}" method="GET">
+		<input type="submit" value="My Page" class="btn">
+	</form>
+</body>
+</html>

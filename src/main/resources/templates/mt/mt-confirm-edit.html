@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+<title>お手伝い編集確認</title>
+</head>
+<body>
+	<p sec:authorize="isAuthenticated()" class="auth-status">
+		ログインユーザー：<span sec:authentication="principal.username"></span><br>		
+	    ロール：<span sec:authentication="principal.authorities"></span>
+	</p>
+	
+	<h2>お手伝い編集確認</h2>
+
+	<table class="confirm-table" th:object="${mtHelpEditForm}">
+		<tr>
+			<td class="guide">【お手伝いID】</td>
+			<td th:text="*{help_id}"></td>
+		</tr>
+		<tr>
+			<td class="guide">【お手伝い名】</td>
+			<td th:text="*{help_name}"></td>
+		</tr>
+		<tr>
+			<td class="guide">【	お小遣い】</td>
+			<td th:text="*{help_ammount}"></td>
+		</tr>
+	</table>
+	<br>
+
+    <form th:action="@{/mt-confirm-edit}" method="POST"
+			th:object="${mtHelpEditForm}">
+    	<input type="hidden" th:field="*{help_id}">
+    	<input type="hidden" th:field="*{help_name}">
+    	<input type="hidden" th:field="*{help_ammount}">
+    	<input type="submit" value="更新実行" class="btn">
+   	</form>
+
+    <form th:action="@{/mt-show-edit}" method="POST"
+			th:object="${mtHelpEditForm}">
+    	<input type="hidden" th:field="*{help_id}">
+    	<input type="hidden" th:field="*{help_name}">
+    	<input type="hidden" th:field="*{help_ammount}">
+    	<input type="submit" value="もどる" class="btn">
+   	</form>
+
+	<br>
+	<a th:href="@{/mt-top}">管理メニュー</a>
+
+	<div class="logoutBtn-wrapper">
+		<form th:action="@{/logout}" method="post">
+			<p><button class="logoutBtn" type="submit">ログアウト</button></p>
+		</form>
+	</div>
+</body>
+</html>

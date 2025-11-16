@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+<title>お手伝い編集</title>
+</head>
+<body>
+	<p sec:authorize="isAuthenticated()" class="auth-status">
+		ログインユーザー：<span sec:authentication="principal.username"></span><br> ロール：<span sec:authentication="principal.authorities"></span>
+	</p>
+
+	<h2>お手伝い編集</h2>
+
+	<form th:action="@{/mt-edit}" method="POST" th:object="${mtHelpEditForm}">
+		【お手伝いID】<br>
+		<p th:text="*{help_id}"></p>
+		<input type="hidden" th:field="*{help_id}">
+		<div th:if="${#fields.hasErrors('help_id')}" th:errors="*{help_id}" class="error-msg"></div>
+		<br> 【お手伝い名】<br>
+		<input type="text" th:field="*{help_name}">
+		<br>
+		<div th:if="${#fields.hasErrors('help_name')}" th:errors="*{help_name}" class="error-msg"></div>
+		<br> 【お小遣い】<br>
+		<input type="text" th:field="*{help_ammount}" class="catch">
+		<br>
+		<div th:if="${#fields.hasErrors('help_ammount')}" th:errors="*{help_ammount}" class="error-msg"></div>
+		<br>
+		<input type="submit" value="更新" class="btn">
+	</form>
+
+	<br>
+	<a th:href="@{/mt-top}">管理メニュー</a>
+	<a th:href="@{/show-help-list}">もどる</a>
+
+	<div class="logoutBtn-wrapper">
+		<form th:action="@{/logout}" method="post">
+			<p>
+				<button class="logoutBtn" type="submit">ログアウト</button>
+			</p>
+		</form>
+	</div>
+</body>
+</html>

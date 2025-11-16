@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+<title>お手伝いメニュー画面</title>
+</head>
+<body>
+	<p sec:authorize="isAuthenticated()" class="auth-status">
+		ログインユーザー：<span sec:authentication="principal.username"></span><br> ロール：<span sec:authentication="principal.authorities"></span>
+	</p>
+
+	<h2>お手伝いメニュー</h2>
+	<div class="main-wrapper">
+		<div class="flex-parent">
+			<!-- お手伝い一覧画面&Myリストへの登録(管理画面と同じくhelp_mstからデータ取得して表示) -->
+			<div class="flex-child">
+				<form th:action="@{/user-show-help-list}" method="POST">
+					<input type="submit" value="お手伝い" class="userHelpMenuBtn">
+				</form>
+			</div>
+			<div class="flex-child">
+				<!-- Myリスト画面 -->
+				<form th:action="@{/user-show-myhelp-list}" method="POST">
+					<input type="submit" value="Myリスト" class="userHelpMenuBtn">
+				</form>
+			</div>
+			<div class="flex-child">
+				<!-- 差し戻されたお手伝い一覧画面 -->
+				<form th:action="@{/user-show-not-approved-help}" method="POST">
+					<input type="submit" value="差し戻し" class="userHelpMenuBtn">
+				</form>
+			</div>
+		</div>
+		<br> <a th:href="@{/user-top}">トップメニュー</a>
+
+		<div class="logoutBtn-wrapper">
+			<form th:action="@{/logout}" method="post">
+				<p>
+					<button class="logoutBtn" type="submit">ログアウト</button>
+				</p>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

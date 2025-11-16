@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+<title>お手伝い登録</title>
+</head>
+<body>
+	<p sec:authorize="isAuthenticated()" class="auth-status">
+		ログインユーザー：<span sec:authentication="principal.username"></span><br>		
+	    ロール：<span sec:authentication="principal.authorities"></span>
+	</p>
+
+	<h2>お手伝い登録</h2>
+
+    <form th:action="@{/mt-regist}" method="POST" th:object="${mtHelpRegistForm}">
+    	【お手伝い名】<br>
+    	<input type="text" th:field="*{helpName}" class="inputSize"><br>
+    	<div th:if="${#fields.hasErrors('helpName')}" th:errors="*{helpName}" class="error-msg"></div>
+		<br>
+    	【お小遣い】<br>
+    	<input type="text" th:field="*{helpAmomunt}" class="catch"><br>
+    	<div th:if="${#fields.hasErrors('helpAmomunt')}" th:errors="*{helpAmomunt}" class="error-msg"></div>
+		<br>
+    	<input type="submit" value="登録" class="btn">
+    </form>
+
+
+
+	<br>
+	<a th:href="@{/mt-top}">管理メニュー</a>
+	<a th:href="@{/mt-show-help-menu}">お手伝いメニュー</a>
+
+	<div class="logoutBtn-wrapper">
+		<form th:action="@{/logout}" method="post">
+			<p><button class="logoutBtn" type="submit">ログアウト</button></p>
+		</form>
+	</div>
+</body>
+</html>

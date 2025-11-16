@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+<title>トップページ</title>
+</head>
+<body>
+	<p sec:authorize="isAuthenticated()" class="auth-status">
+		ログインユーザー：<span sec:authentication="principal.username"></span><br> ロール：<span sec:authentication="principal.authorities"></span>
+	</p>
+
+	<div class="main">
+		<!--		<div th:if="${param.loggedIn}" style="color: green;">ログインしました。</div>-->
+		<div th:object="${bankAccountForm}">
+			<h2>あなたのお金</h2>
+			<!-- 口座の預金を表示 bank_account_mstのfinancial_asset	 -->
+			<div th:if="${bankList} == null">口座が存在しません。</div>
+			<div th:if="${bankList} != null">
+				<div class="user-money" th:each="bank : ${bankList}">
+					<h1 th:text="${bank.financial_asset} + '円'"></h1>
+				</div>
+			</div>
+
+			<div>
+				<!-- お手伝い画面	-->
+				<form th:action="@{/user-show-help-menu}" method="POST">
+					<input type="submit" value="お手伝い" class="btn">
+				</form>
+				<!-- マイページ画面	-->
+				<form th:action="@{/mypage/user-show-mypage}" method="GET">
+					<input type="submit" value="My Page" class="btn">
+				</form>
+				<!-- カレンダー画面	未実装-->
+				<!--			<form th:action="@{/mt-show-payment-regist}" method="POST">-->
+				<!--				<input type="submit" value="カレンダー" class="btn">-->
+				<!--			</form>-->
+				<!-- 収益の変遷画面 未実装-->
+				<!--			<form th:action="@{/mt-show-report-regist}" method="POST">-->
+				<!--				<input type="submit" value="収益" class="btn">-->
+				<!--			</form>-->
+			</div>
+		</div>
+	</div>
+
+	<div sec:authorize="hasRole('ADMIN')">
+		<a th:href="@{/mt-top}">管理メニュー</a>
+	</div>
+	<a th:href="@{/adminuser}">共通メニュー</a>
+	<div class="logoutBtn-wrapper">
+		<form th:action="@{/logout}" method="post">
+			<p>
+				<button class="logoutBtn" type="submit">ログアウト</button>
+			</p>
+		</form>
+	</div>
+</body>
+</html>

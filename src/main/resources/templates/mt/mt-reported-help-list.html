@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+<title>報告されたお手伝い画面</title>
+</head>
+<body>
+	<p sec:authorize="isAuthenticated()" class="auth-status">
+		ログインユーザー：<span sec:authentication="principal.username"></span><br>		
+	    ロール：<span sec:authentication="principal.authorities"></span>
+	</p>
+
+
+	<h2>報告されたお手伝いの承認・差し戻し</h2>
+	<form th:action="@{/mt-reported-help-search}" method="POST" th:object="${mtReportedHelpListForm}">
+		【お手伝い名】<br>
+	   	<input type="text" th:field="*{help_name}" class="inputSize"><br>
+		<br>
+	   	<input type="submit" value="検索" class="btn">
+	</form>
+	
+	<div th:if="${helpList} == null">
+		該当するお手伝いが存在しません。
+	</div>
+	<div th:if="${helpList} != null">
+		<h2>報告されたお手伝い</h2>
+	
+		<table class="help-list">
+			<tr>
+				<th>承認</th><th>差戻し</th><th>報告お手伝いID</th>	<th>ユーザID</th><th>お手伝い名</th><th>お小遣い</th>
+			</tr>
+			
+			<tr th:each="help : ${helpList}">
+				<td>
+<!--				報告されたお手伝いを承認する。-->
+					<form th:action="@{/mt-approve}" method="POST" th:object="${mtReportedHelpListForm}">
+						<input type="hidden" name="reported_help_id" th:value="${help.reported_help_id}">
+						<input type="hidden" name="help_id" th:value="${help.help_id}">
+						<input type="hidden" name="help_name" th:value="${help.help_name}">
+						<input type="hidden" name="help_ammount" th:value="${help.help_ammount}">
+						<input type="hidden" name="user_id" th:value="${help.user_id}">
+						<input type="hidden" name="approved_flag" th:value="${help.approved_flag}">
+						<input type="submit" value="承認" class="tbtn">	
+					</form>
+				</td>
+				<td>
+	<!--			報告されたお手伝いを差し戻す。-->
+					<form th:action="@{/mt-not-approve}" method="POST" th:object="${mtReportedHelpListForm}">
+						<input type="hidden" name="reported_help_id" th:value="${help.reported_help_id}">
+						<input type="hidden" name="help_id" th:value="${help.help_id}">
+						<input type="hidden" name="help_name" th:value="${help.help_name}">
+						<input type="hidden" name="help_ammount" th:value="${help.help_ammount}">
+						<input type="hidden" name="user_id" th:value="${help.user_id}">
+						<input type="hidden" name="approved_flag" th:value="${help.approved_flag}">
+						<input type="submit" value="差戻" class="tbtn">	
+					</form>
+				</td>
+				
+<!--				データ中身表示-->				
+				<td th:text="${help.reported_help_id}"></td>
+				<td th:text="${help.user_id}"></td>
+				<td th:text="${help.help_name}"></td>
+				<td th:text="${help.help_ammount}"></td>
+			</tr>
+		</table>
+	</div>
+
+	<br>
+	<a th:href="@{/mt-top}">管理メニュー</a>
+
+	<div class="logoutBtn-wrapper">
+		<form th:action="@{/logout}" method="post">
+			<p><button class="logoutBtn" type="submit">ログアウト</button></p>
+		</form>
+	</div>
+</body>
+</html>

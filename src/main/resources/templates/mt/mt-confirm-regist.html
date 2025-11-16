@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+<title>お手伝い登録確認</title>
+</head>
+<body>
+	<p sec:authorize="isAuthenticated()" class="auth-status">
+		ログインユーザー：<span sec:authentication="principal.username"></span><br>		
+	    ロール：<span sec:authentication="principal.authorities"></span>
+	</p>
+	
+	<h2>お手伝い登録確認</h2>
+
+	<p>下記お手伝いを一覧に登録しますか？</p>
+	
+	<table class="confirm-table" th:object="${mtHelpRegistForm}">
+		<tr>
+			<td class="guide">【	お手伝い名】</td>
+			<td th:text="*{helpName}"></td>
+		</tr>
+		<tr>
+			<td class="guide">【	お小遣い】</td>
+			<td th:text="*{helpAmomunt}"></td>
+		</tr>
+	</table>
+	<br>
+
+    <form th:action="@{/mt-confirm-help-regist}" method="POST" th:object="${mtHelpRegistForm}">
+    	<input type="hidden" th:field="*{helpName}">
+    	<input type="hidden" th:field="*{helpAmomunt}">
+    	<input type="submit" value="登録実行" class="btn">
+   	</form>
+
+    <form th:action="@{/mt-show-help-regist}" method="POST" th:object="${mtHelpRegistForm}">
+    	<input type="hidden" th:field="*{helpName}">
+    	<input type="hidden" th:field="*{helpAmomunt}">
+    	<input type="submit" value="もどる" class="btn">
+   	</form>
+
+	<br>
+	<a th:href="@{/mt-top}">管理メニュー</a>
+
+	<div class="logoutBtn-wrapper">
+		<form th:action="@{/logout}" method="post">
+			<p><button class="logoutBtn" type="submit">ログアウト</button></p>
+		</form>
+	</div>
+</body>
+</html>

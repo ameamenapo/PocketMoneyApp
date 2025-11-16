@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+<title>お手伝いメニュー画面</title>
+</head>
+<body>
+	<p sec:authorize="isAuthenticated()" class="auth-status">
+		ログインユーザー：<span sec:authentication="principal.username"></span><br>		
+	    ロール：<span sec:authentication="principal.authorities"></span>
+	</p>
+
+
+	<h2>お手伝いメニュー</h2>
+	<p>お手伝いの登録・編集・削除ができます。</p>
+	<div class="flex-parent">
+		<div class="flex-child">
+			<!-- お手伝い一覧画面 -->	
+			<form th:action="@{/show-help-list}" method="POST">
+				<input type="submit" value="お手伝いリスト" class="mtTopMenuBtn">
+			</form>
+		</div>
+		<div class="flex-child">
+			<!-- お手伝い登録画面	-->	
+			<form th:action="@{/mt-show-regist}" method="POST">
+				<input type="submit" value="お手伝い登録" class="mtTopMenuBtn">
+    		</form>
+		</div>
+	</div>
+	
+	<br>
+	<a th:href="@{/mt-top}">管理メニュー</a>
+	
+	<div class="logoutBtn-wrapper">
+		<form th:action="@{/logout}" method="post">
+			<p><button class="logoutBtn" type="submit">ログアウト</button></p>
+		</form>
+	</div>
+</body>
+</html>
