@@ -5,17 +5,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/common-style.css}">
 <link rel="stylesheet" th:href="@{/css/auth-style.css}">
 <title>ログインページ</title>
 </head>
 
 <body>
-	<div th:if="${param.loggedIn}" style="color: green;" class="auth-message">ログインしました。</div>
-	<div th:if="${param.loggedOut}" style="color: green;" class="auth-message">ログアウトしました。</div>
+	<div th:if="${param.loggedIn}" style="color: #FFFFFF" class="auth-message">ログインしました。</div>
+	<div th:if="${param.loggedOut}" style="color: #FFFFFF;" class="auth-message">ログアウトしました。</div>
 
 	<p sec:authorize="isAuthenticated()" class="auth-status">
 		ログインユーザー：<span sec:authentication="principal.username"></span><br> ロール：<span sec:authentication="principal.authorities"></span>
 	</p>
+		<div class="logoutBtn-wrapper">
+		<form th:action="@{/logout}" method="post">
+
+				<button class="logoutBtn" type="submit">ログアウト</button>
+
+		</form>
+	</div>
 
 	<h1>お小遣いアプリ</h1>
 
@@ -34,13 +42,7 @@
 
 
 
-	<div class="logoutBtn-wrapper">
-		<form th:action="@{/logout}" method="post">
-			<p>
-				<button class="logoutBtn" type="submit">ログアウト</button>
-			</p>
-		</form>
-	</div>
+
 </body>
 
 </html>
