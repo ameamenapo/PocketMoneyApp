@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/common-style.css}">
 	<link rel="stylesheet" th:href="@{/css/auth-style.css}">
     <title>ユーザ登録</title>
 </head>
@@ -13,10 +14,8 @@
 	<div th:if="${param.loggedIn}" style="color: green;">ログインしました。</div>
 	<div th:if="${param.loggedOut}">ログアウトしました。</div>
 	
-	<p sec:authorize="isAuthenticated()" class="auth-status">
-		ログインユーザー：<span sec:authentication="principal.username"></span><br>		
-	    ロール：<span sec:authentication="principal.authorities"></span>
-	</p>
+	<!--ヘッダーフラグメント-->
+	<header th:replace="~{fragments/header :: header-fragment}"></header>
 <!--	管理者用登録フォーム-->
 	<div sec:authorize="hasRole('ADMIN')">
 	    <h2>ユーザー登録フォーム</h2>
@@ -64,11 +63,6 @@
 	<br>
 	<a th:href="@{/mt-top}">管理メニュー</a>
 	
-	<div class="logoutBtn-wrapper">
-		<form th:action="@{/logout}" method="post">
-			<p><button class="logoutBtn" type="submit">ログアウト</button></p>
-		</form>
-	</div>
 </body>
 
 </html>

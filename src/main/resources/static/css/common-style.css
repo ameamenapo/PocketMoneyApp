@@ -1,7 +1,11 @@
 @charset "UTF-8";
-
-
 /***************共通 start*******************************************************/
+header {
+/*	ヘッダーを画面の15%にして、他を画面の80%にしている*/
+/*adminUserView.htmlのheight参照*/
+	height: 15vh;
+}
+
 .auth-status {
 	text-align: right;
 }

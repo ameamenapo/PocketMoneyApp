@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 
 <head>
@@ -11,37 +12,37 @@
 </head>
 
 <body>
-	<div th:if="${param.loggedIn}" style="color: #FFFFFF" class="auth-message">ログインしました。</div>
-	<div th:if="${param.loggedOut}" style="color: #FFFFFF;" class="auth-message">ログアウトしました。</div>
 
-	<p sec:authorize="isAuthenticated()" class="auth-status">
-		ログインユーザー：<span sec:authentication="principal.username"></span><br> ロール：<span sec:authentication="principal.authorities"></span>
-	</p>
-		<div class="logoutBtn-wrapper">
-		<form th:action="@{/logout}" method="post">
 
-				<button class="logoutBtn" type="submit">ログアウト</button>
-
-		</form>
-	</div>
-
-	<h1>お小遣いアプリ</h1>
-
-	<div class="flex-parent">
-		<div sec:authorize="hasRole('ADMIN')" class="flex-child">
-			<form th:action="@{/mt-top}" method="POST">
-				<input type="submit" value="管理メニュー" class="mtTopMenuBtn">
-			</form>
+	<!--ヘッダーフラグメント-->
+	<header th:replace="~{fragments/header :: header-fragment}"></header>
+	<div class="top-page-wrapper">
+		<div class="top-page-right-wrapper">
+			<div class="top-page-title-wrapper">
+				<div class="title1">Pocket</div>
+				<div class="title2">Money</div>
+				<div class="title3">App</div>
+			</div>
+			<div class="top-page-subtitle-wrapper">
+				<div class="subtitle">おこづかいアプリ</div>
+			</div>
 		</div>
-		<div class="flex-child">
-			<form th:action="@{/user-top}" method="POST" th:object="${userRegisterForm}">
-				<input type="submit" value="トップページ" class="mtTopMenuBtn">
-			</form>
+		<div class="top-page-left-wrapper">
+			<div sec:authorize="hasRole('ADMIN')" class="left-child">
+				<form th:action="@{/mt-top}" method="POST">
+					<input type="submit" value="管理メニュー" class="top-kanri-Btn">
+				</form>
+			</div>
+			<div class="left-child">
+				<form th:action="@{/user-top}" method="POST"
+					th:object="${userRegisterForm}">
+					<input type="submit" value="ユーザーメニュー" class="top-user-Btn">
+				</form>
+			</div>
 		</div>
+
+
 	</div>
-
-
-
 
 </body>
 

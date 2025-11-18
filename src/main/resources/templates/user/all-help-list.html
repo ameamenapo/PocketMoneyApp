@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/common-style.css}">
 <link rel="stylesheet" th:href="@{/css/mt-style.css}">
 <title>お手伝い検索・登録画面</title>
 </head>
 <body>
-	<p sec:authorize="isAuthenticated()" class="auth-status">
-		ログインユーザー：<span sec:authentication="principal.username"></span><br>		
-	    ロール：<span sec:authentication="principal.authorities"></span>
-	</p>
-
+	<!--ヘッダーフラグメント-->
+	<header th:replace="~{fragments/header :: header-fragment}"></header>
+	
 	<h2>お手伝い検索</h2>
 	<p>検索ボタンを押すと、お手伝いリストを見ることができます。</p>
 	<p>キーワードを入力し、お手伝いを検索することもできます。</p>
@@ -56,10 +55,6 @@
 	<a th:href="@{/user-show-help-menu}">お手伝いメニュー</a>
 	<a th:href="@{/user-top}">トップメニュー</a>
 
-	<div class="logoutBtn-wrapper">
-		<form th:action="@{/logout}" method="post">
-			<p><button class="logoutBtn" type="submit">ログアウト</button></p>
-		</form>
-	</div>
+
 </body>
 </html>

@@ -76,4 +76,39 @@ h1 {
 }
 
 /***************login.html end*******************************************************/
-************/
+/***************adminUserView.html start*******************************************************/
+.top-page-wrapper {
+	color:#FFFFFF;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center; /* 主軸（横方向）を中央揃え */
+	align-items: center; /* 交差軸（縦方向）を中央揃え */
+	/*	background-color: lightsteelblue;      背景色指定 */
+	padding: 10px;
+	align-items: center; /* 余白指定 */
+	height: 80vh;
+}
+
+.top-page-right-wrapper {
+	flex: 1;
+	padding: 10px;
+	width: 100%;
+	background-color: #09C289;
+/*	color: black; */
+	margin: 10px;
+	height: 80%;
+	/*	border-radius: 20px;  角丸指定 */
+}
+
+.top-page-left-wrapper {
+	flex: 1;
+	padding: 10px;
+	width: 100%;
+	background-color: white;
+/*	color: black; */
+	margin: 10px;
+	/*	border-radius: 20px;  角丸指定 */
+	height: 80%;
+}
+
+/***************adminUserView.html start*******************************************************/

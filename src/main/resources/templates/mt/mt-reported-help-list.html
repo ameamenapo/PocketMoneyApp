@@ -3,15 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/common-style.css}">
 <link rel="stylesheet" th:href="@{/css/mt-style.css}">
 <title>報告されたお手伝い画面</title>
 </head>
 <body>
-	<p sec:authorize="isAuthenticated()" class="auth-status">
-		ログインユーザー：<span sec:authentication="principal.username"></span><br>		
-	    ロール：<span sec:authentication="principal.authorities"></span>
-	</p>
-
+	<!--ヘッダーフラグメント-->
+	<header th:replace="~{fragments/header :: header-fragment}"></header>
 
 	<h2>報告されたお手伝いの承認・差し戻し</h2>
 	<form th:action="@{/mt-reported-help-search}" method="POST" th:object="${mtReportedHelpListForm}">
@@ -70,10 +68,6 @@
 	<br>
 	<a th:href="@{/mt-top}">管理メニュー</a>
 
-	<div class="logoutBtn-wrapper">
-		<form th:action="@{/logout}" method="post">
-			<p><button class="logoutBtn" type="submit">ログアウト</button></p>
-		</form>
-	</div>
+
 </body>
 </html>

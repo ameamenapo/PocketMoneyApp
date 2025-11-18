@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/common-style.css}">
 <link rel="stylesheet" th:href="@{/css/mt-style.css}">
 <title>画像アップロード</title>
 </head>
 <body>
-	<p sec:authorize="isAuthenticated()" class="auth-status">
-		ログインユーザー：<span sec:authentication="principal.username"></span><br> ロール：<span sec:authentication="principal.authorities"></span>
-	</p>
+	<!--ヘッダーフラグメント-->
+	<header th:replace="~{fragments/header :: header-fragment}"></header>
+	
 	<h2>画像アップロード</h2>
 	<form th:action="@{/images/upload}" method="post" enctype="multipart/form-data">
 

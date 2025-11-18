@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/common-style.css}">
 <link rel="stylesheet" th:href="@{/css/mt-style.css}">
 <title>管理メニュー</title>
 </head>
 <body>
-	<p sec:authorize="isAuthenticated()" class="auth-status">
-		ログインユーザー：<span sec:authentication="principal.username"></span><br> ロール：<span sec:authentication="principal.authorities"></span>
-	</p>
+	<!--ヘッダーフラグメント-->
+	<header th:replace="~{fragments/header :: header-fragment}"></header>
 
 	<h2>管理メニュー</h2>
 	<div class="main-wrapper">
@@ -20,12 +20,12 @@
 					<input type="submit" value="お手伝い" class="mtTopMenuBtn">
 				</form>
 			</div>
-			<div class="flex-child">
-				<!-- 決済画面		未実装-->
-				<form th:action="@{/mt-show-payment-regist}" method="POST">
-					<input type="submit" value="決済" class="mtTopMenuBtn">
-				</form>
-			</div>
+<!--			<div class="flex-child">-->
+<!--				 決済画面		未実装-->
+<!--				<form th:action="@{/mt-show-payment-regist}" method="POST">-->
+<!--					<input type="submit" value="決済" class="mtTopMenuBtn">-->
+<!--				</form>-->
+<!--			</div>-->
 			<div class="flex-child">
 				<!-- 報告されたお手伝い一覧-->
 				<form th:action="@{/mt-show-reported-help-list}" method="POST">
@@ -48,13 +48,6 @@
 
 		<a th:href="@{/adminuser}">共通メニュー</a>
 
-		<div class="logoutBtn-wrapper">
-			<form th:action="@{/logout}" method="post">
-				<p>
-					<button class="logoutBtn" type="submit">ログアウト</button>
-				</p>
-			</form>
-		</div>
 	</div>
 </body>
 </html>
