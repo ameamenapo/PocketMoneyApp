@@ -3,14 +3,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 body {
-	/*	font-family: BIZ UDPゴシック;*/
-	/*	background-color: lightblue;*/
 	background-color: #4DA8DA;
 	text-align: center;
-	/*	background: #76b852;  fallback for old browsers */
-	/*	background: rgb(141, 194, 111);*/
-	/*	background: linear-gradient(90deg, rgba(141, 194, 111, 1) 0%,*/
-	/*		rgba(118, 184, 82, 1) 50%);*/
 	font-family: "Roboto", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -18,7 +12,7 @@ body {
 
 /***************login.html start*******************************************************/
 h1 {
-	font-size: 32px;
+	font-size: 1.6rem;
 	color: #FFFFFF;
 }
 
@@ -69,46 +63,141 @@ h1 {
 }
 
 .form button:hover, .form button:active, .form button:focus {
-	/*	background: #43A047;*/
-	/*	background: #80D8C3;*/
 	background: #00D800;
-	/*	color: #000033;*/
 }
 
 /***************login.html end*******************************************************/
 /***************adminUserView.html start*******************************************************/
+.main-wrapper {
+	width: 90vw;
+	margin: 0 auto;
+}
 .top-page-wrapper {
-	color:#FFFFFF;
+	color: #FFFFFF;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center; /* 主軸（横方向）を中央揃え */
 	align-items: center; /* 交差軸（縦方向）を中央揃え */
-	/*	background-color: lightsteelblue;      背景色指定 */
-	padding: 10px;
-	align-items: center; /* 余白指定 */
+	/*		background-color: aliceblue;      */
+	padding: 10px; align-items : center; /* 余白指定 */
 	height: 80vh;
-}
-
-.top-page-right-wrapper {
-	flex: 1;
-	padding: 10px;
-	width: 100%;
-	background-color: #09C289;
-/*	color: black; */
-	margin: 10px;
-	height: 80%;
-	/*	border-radius: 20px;  角丸指定 */
+	align-items: center;
 }
 
 .top-page-left-wrapper {
 	flex: 1;
 	padding: 10px;
 	width: 100%;
-	background-color: white;
-/*	color: black; */
+/*	background-color: #09C289;*/
+	border: 1px solid white;
+	margin: 10px;
+	height: 80%;
+	/*	border-radius: 20px;  角丸指定 */
+	display: flex; /* 追加 */
+	justify-content: center; /* 横方向の中央揃え */
+	align-items: center;
+	margin: 10px; /* 縦方向の中央揃え */
+}
+
+.top-page-right-wrapper {
+	flex: 1;
+	padding: 10px;
+	width: 100%;
+	/*	background-color: white;*/
+	/*	color: black; */
 	margin: 10px;
 	/*	border-radius: 20px;  角丸指定 */
 	height: 80%;
 }
 
-/***************adminUserView.html start*******************************************************/
+.top-page-title-wrapper {
+	/*	width: 200px;  幅指定 */
+	/*	height: 90px;  高さ指定 */
+	
+}
+
+.top-page-title {
+	font-size: 3rem;
+	text-align: right;
+}
+
+.top-page-subtitle {
+	font-size: 1rem;
+}
+
+.subtitle {
+	margin-top: 0.5rem;
+}
+
+.top-page-btn-wrapper {
+	height: 100%;
+	display: flex;
+	flex-direction: column; /* 縦に並べる */
+	justify-content: center;
+}
+
+.menu-btn-wrapper {
+	display: block;
+	width: 90%;
+	height: calc(100%/ 3); /* ★ 高さを親(top-page-btn-wrapper)の 1/3 にする */
+	margin: 0 auto; /* 中央寄せ */
+	display: flex; /* ★ 追加 */
+	display: flex;
+	justify-content: center; /* ★ 横方向中央 */
+	align-items: center; /* ★ 縦方向中央 */
+	/*	background-color: #09C289;　ここで背景色つけるとtop-kanri-Btnとかにborder-radiusが効かなくなる*/
+	margin: 1rem auto;
+}
+
+.menu-btn-wrapper form {
+	width: 100%;
+	height: 100%;
+}
+
+/*ボタンにポインタかざした際に色が変化する*/
+.top-kanri-Btn:hover, .top-kanri-Btn:active, .top-kanri-Btn:focus {
+	background: #09C289;
+}
+.top-user-Btn:hover, .top-user-Btn:active, .top-user-Btn:focus {
+	background: #09C289;
+}
+
+.top-kanri-Btn, .top-user-Btn {
+	/****** 元々のinputタグの装飾をオフにする ********/
+	/* 背景色を無色に */
+	background: transparent;
+	/* 枠線を消す */
+	border: none;
+	/* クリックした際に枠線をnone消す */
+	outline: none;
+	/* 影を消す */
+	box-shadow: none;
+	/****** ここまで ******************************/
+	display: block; /* 自由に装飾するためにブロック化 */
+	cursor: pointer; /* かざすとポインター */
+	/*	中央ぞろえのため*/
+	width: 100%; /* 親と同じ幅に */
+	height: 100%; /* 親と同じ高さに */
+	margin: 0; /* 外側の余白は消す */
+	padding: 0; /* ボタン内余白は必要なら後で調整 */
+	/*	デザイン*/
+	/*	border: 2px solid F9FFE0;*/
+	border: 1px solid white;
+	border-radius: 1rem;
+	font-size: 1rem;
+	color: blue;
+	
+	background-color: #80D8C3;
+/*		background-color: #09C289;*/
+/*	background-color: #FFD66B;*/
+	text-align: center; font-size : 1rem; color : #fff; height : 100%;
+	/* 親と同じ高さに */
+	margin: 0; /* 外側の余白は消す */
+	padding: 0;
+	font-size: 1rem;
+	color: #fff;
+	height: 100%;
+
+}
+
+/***************adminUserView.html end*******************************************************/

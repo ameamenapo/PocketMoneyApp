@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" th:href="@{/css/common-style.css}">
-	<link rel="stylesheet" th:href="@{/css/auth-style.css}">
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
     <title>ユーザ登録</title>
 </head>
 
@@ -34,7 +34,9 @@
 	            <option value="2">管理者ユーザー</option>
 	        </select>
 	        <div th:if="${#fields.hasErrors('roleId')}" th:errors="*{roleId}" style="color: red;"></div>
-	        <button type="submit">登録</button>
+		<br>
+		<br>
+	        <input type="submit" value="登録" class="btn">
 	    </form>
 		
 		<h2>ユーザーリスト</h2>

@@ -1,9 +1,18 @@
 @charset "UTF-8";
 /***************共通 start*******************************************************/
+/*文字サイズを基本20pxとして、他の箇所のfont-sizeをrem指定にする！*/
+html {
+  font-size: 20px;
+}
+
 header {
 /*	ヘッダーを画面の15%にして、他を画面の80%にしている*/
 /*adminUserView.htmlのheight参照*/
 	height: 15vh;
+}
+
+body {
+	background-color: #4DA8DA;
 }
 
 .auth-status {
@@ -37,13 +46,13 @@ header {
 	/*	border: 2px solid blue;*/
 	border: 2px solid F9FFE0;
 	padding: 4px 20px;
-	font-size: 12px;
+	font-size: 0.6rem;
 	color: blue;
 	/*	background-color: #fff;*/
 	background-color: #4753A7;
 	text-align: center;
 	padding: 4px 20px;
-	font-size: 12px;
+	font-size: 0.6rem;
 	/*	color: blue;*/
 	color: #fff;;
 }
@@ -53,4 +62,4 @@ header {
 	background: blue;
 }
 
-/***************共通 end*******************************************
+/***************共通 end*******************************************/

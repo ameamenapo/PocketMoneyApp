@@ -2,37 +2,34 @@
 
 /***************共通 start*******************************************************/
 body {
-	font-family: BIZ UDPゴシック;
-	background-color: lightblue;
 	text-align: center;
 }
 
 h1 {
-	font-size: 32px;
-	color: black;
+	font-size: 1.6rem;
+	color: #FFFFFF;
 }
 
 h2 {
-	font-size: 28px;
-	background-color: lightblue;
-	color: white;
+	font-size: 1.4rem;
+	color: #FFFFFF;
 	padding-top: 6px;
 	padding-bottom: 6px;
 }
 
 /* 通常のボタン */
 .btn {
-	border: 2px solid mediumvioletred;
+	border: 2px solid #FFFFFF;
 	padding: 4px 20px;
 	font-size: 20px;
-	color: mediumvioletred;
-	background-color: #f5ecf4;
+	color: #FFFFFF;;
+	background-color: #80D8C3;
 	cursor: pointer;
 }
 
 .btn:hover {
-	color: #fff;
-	background: mediumvioletred;
+	color: #FFFFFF;
+	background: #FFD66B;
 }
 
 /* コメント入力の幅 */
@@ -60,7 +57,7 @@ table {
 th {
 	border: 1px solid aliceblue;
 	text-align: center;
-	background-color: steelblue;
+	background-color: #4753A7;
 	height: 32px;
 }
 
@@ -71,21 +68,22 @@ td {
 }
 
 .help-list {
-	background-color: lightsteelblue;
+	background-color: #4DA8DA;
 }
 
 /* テーブル内ボタン */
 .tbtn {
-	border: 2px solid blueviolet;
+	border: 2px solid #FFFFFF;
 	padding: 2px 10px;
 	font-size: 16px;
-	color: blueviolet;
+	color: #FFFFFF;
 	cursor: pointer;
+	background: #80D8C3;
 }
 
 .tbtn:hover {
-	color: #fff;
-	background: blueviolet;
+	color: #FFFFFF;
+	background: #FFD66B;
 }
 
 /* 確認画面用 */
@@ -103,60 +101,23 @@ td {
 }
 /***************共通 end*********************************************************************/
 
-/***************ログインまわり start**************************************************************/
-.auth-message {
-	text-align: right;
-}
-
-.auth-status {
-	text-align: right;
-}
-/*ログアウトボタンを中央寄せにするためflexbox使う。このクラス直下にある多分pタグの要素がflexboxの子要素になると思われる*/
-.logoutBtn-wrapper {
-	/*  padding:50px 0;*/
-	display: flex;
-	justify-content: center;
-}
-
-.logoutBtn {
-	/****** 元々のbuttonタグの装飾をオフにする ********/
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-	outline: none;
-	padding: 0;
-	appearance: none;
-	/****** ここまで ******************************/
-	/* 自由に装飾するためにブロック化 */
-	display: block;
-	/* かざすとポインター */
-	cursor: pointer;
-	border: 2px solid blue;
-	padding: 4px 20px;
-	font-size: 12px;
-	color: blue;
-	background-color: #fff;
-	text-align: center;
-}
-
-.logoutBtn:hover {
-	color: #fff;
-	background: blue;
-}
-/***************ログインまわり end********************/
-
 /* user-top.html */
 .user-money {
+	text-align:center;
+	width: 70%;
 	border-radius: 50px;
 	padding: 30px 60px;
-	background-color: white;
-	/*    position: absolute;*/
-	/*    top:80%;*/
+	background-color: #FFFFFF;
 	margin: 50px 100px;
 }
-/* user-help-menu.html */ /* mt-top.html */
+
+.user-money p {
+	font-size: 1.6rem;
+	color: 100;
+}
+/* user-help-menu.html */ /* mt-top.html　など */
 .main-wrapper {
-	width: 80%;
+	width: 90vw;
 	margin: 0 auto;
 }
 
@@ -175,14 +136,13 @@ td {
 	display: block;
 	/* かざすとポインター */
 	cursor: pointer;
-	/* 文字色 */
-	color: palevioletred;
-	font-size: 24px;
-	/* .flex-childとになたような大きさにして、ボタン押下できる範囲を広める（偽装）*/
-	height: 250px;
-	width: 250px;
-	border-radius: 20px; /* 角丸指定 */
-	background-color: white;
+	background: #80D8C3;
+	color: #FFFFFF;
+	font-size: 1.2rem;
+	height: 100%;
+	width: 100%;
+	border-radius: 20px;
+	width: 100%; /* 角丸指定 */
 }
 
 .userHelpMenuBtn {
@@ -200,33 +160,69 @@ td {
 	display: block;
 	/* かざすとポインター */
 	cursor: pointer;
-	/* 文字色 */
-	color: palevioletred;
-	font-size: 24px;
-	/* .flex-childとになたような大きさにして、ボタン押下できる範囲を広める（偽装）*/
+	background: #80D8C3;
+	color: #FFFFFF;
+	font-size: 1.2rem;
 	height: 250px;
 	width: 250px;
 	border-radius: 20px; /* 角丸指定 */
-	background-color: white;
+}
+
+.mtTopMenuBtn:hover, .mtTopMenuBtn:active, .mtTopMenuBtn:focus {
+	background: #09C289;;
+}
+
+.userHelpMenuBtn:hover, .userHelpMenuBtn:active, .userHelpMenuBtn:focus
+	{
+	background: #09C289;;
 }
 
 .flex-parent {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center; /* 主軸（横方向）を中央揃え */ 
-	align-items : center;/* 交差軸（縦方向）を中央揃え */
-	/*	background-color: lightsteelblue;      背景色指定 */
+	justify-content: center; /* 主軸（横方向）を中央揃え */
+	align-items: center; /* 交差軸（縦方向）を中央揃え */
 	padding: 10px;
-	align-items: center; /* 余白指定 */
 }
 
 .flex-child {
-	padding: 10px;
+	padding: 0; /* paddingを消す（inputとサイズを同じにする） */
 	height: 250px;
 	width: 250px;
-	background-color: white;
-	color: black; /* 文字色 */
+	background: #09C289;
+	color: #FFFFFF;
 	margin: 30px; /* 外側の余白 */
 	border-radius: 20px; /* 角丸指定 */
-/*	margin: 0 auto;*/
+	overflow: hidden; /* はみ出し防止 */
 }
+
+.flex-child form {
+	height: 100%;
+	width: 100%;
+}
+
+/***************confirm関連html start*********************************************************************/
+.confirm-btn-wrapper {
+	display: flex;
+	flex-direction: row; /*横並び・左から右（デフォルト）*/
+	flex-wrap: wrap;
+	justify-content: center; /* 主軸（横方向）を中央揃え */
+	align-items: center; /* 交差軸（縦方向）を中央揃え */
+}
+
+.confirm-btn-wrapper form {
+	margin: 0 20px;
+}
+
+/***************confirm関連html end*********************************************************************/
+
+/***************myPage.html start*********************************************************************/
+.mypage-wrapper {
+	display: flex;
+	flex-direction: row; /*横並び・左から右（デフォルト）*/
+	flex-wrap: no-wrap;
+	justify-content: center; /* 主軸（横方向）を中央揃え */
+	align-items: center; /* 交差軸（縦方向）を中央揃え */
+}
+
+/***************myPage.html end*********************************************************************/

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/common-style.css}">
 <link rel="stylesheet" th:href="@{/css/mt-style.css}">
 <title>トップページ</title>
 </head>
@@ -18,11 +20,11 @@
 			<div th:if="${bankList} == null">口座が存在しません。</div>
 			<div th:if="${bankList} != null">
 				<div class="user-money" th:each="bank : ${bankList}">
-					<h1 th:text="${bank.financial_asset} + '円'"></h1>
+					<p th:text="${bank.financial_asset} + '円'"></p>
 				</div>
 			</div>
 
-			<div>
+			<div class="confirm-btn-wrapper">
 				<!-- お手伝い画面	-->
 				<form th:action="@{/user-show-help-menu}" method="POST">
 					<input type="submit" value="お手伝い" class="btn">

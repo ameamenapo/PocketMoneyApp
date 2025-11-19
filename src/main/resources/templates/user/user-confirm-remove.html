@@ -29,6 +29,7 @@
 	</table>
 	<br>
 
+<div class="confirm-btn-wrapper">
     <form th:action="@{/user-confirm-remove}" method="POST" th:object="${userRemoveForm}">
 			<input type="hidden" th:field="*{user_help_id}">
 			<input type="hidden" th:field="*{help_id}">
@@ -42,7 +43,7 @@
     <form th:action="@{/user-show-myhelp-list}" method="POST">
     	<input type="submit" value="もどる" class="btn">
    	</form>
-
+</div>
 	<br>
 	<a th:href="@{/user-top}">トップメニュー</a>
 

@@ -27,6 +27,7 @@
 	</table>
 	<br>
 
+<div class="confirm-btn-wrapper">
     <form th:action="@{/user-confirm-help-regist}" method="POST" th:object="${userRegistForm}">
 		<input type="hidden" th:field="*{help_id}">
 		<input type="hidden" th:field="*{help_name}">
@@ -46,7 +47,7 @@
 		<input type="hidden" th:field="*{reported_flag}">
     	<input type="submit" value="もどる" class="btn">
    	</form>
-
+</div>
 	<br>
 	<a th:href="@{/user-top}">トップメニュー</a>
 

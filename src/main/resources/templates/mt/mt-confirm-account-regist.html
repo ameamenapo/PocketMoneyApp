@@ -27,6 +27,7 @@
 	</table>
 	<br>
 
+<div class="confirm-btn-wrapper">
     <form th:action="@{/mt-confirm-account-regist}" method="POST" th:object="${bankAccountForm}">
 		<input type="hidden" th:field="*{userName}">
     	<input type="hidden" th:field="*{financial_asset}">
@@ -38,7 +39,7 @@
     	<input type="hidden" th:field="*{financial_asset}">
     	<input type="submit" value="もどる" class="btn">
    	</form>
-
+</div>
 	<br>
 	<a th:href="@{/mt-top}">管理メニュー</a>
 

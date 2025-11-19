@@ -29,6 +29,7 @@
 	</table>
 	<br>
 
+<div class="confirm-btn-wrapper">
     <form th:action="@{/mt-confirm-remove}" method="POST" th:object="${mtHelpRemoveForm}">
 			<input type="hidden" th:field="*{help_id}">
 			<input type="hidden" th:field="*{help_name}">
@@ -39,7 +40,7 @@
     <form th:action="@{/show-help-list}" method="POST">
     	<input type="submit" value="もどる" class="btn">
    	</form>
-
+</div>
 	<br>
 	<a th:href="@{/mt-top}">管理メニュー</a>
 

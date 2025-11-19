@@ -44,6 +44,7 @@
 	</table>
 	<br>
 
+<div class="confirm-btn-wrapper">
 	<form th:action="@{/profile/update-execute}" method="POST" th:object="${profileEditForm}">
 		<input type="hidden" th:field="*{profile_id}">
 		<input type="hidden" th:field="*{user_id}">
@@ -67,7 +68,7 @@
 		<input type="hidden" th:field="*{comments}">
 		<input type="submit" value="もどる" class="btn">
 	</form>
-
+</div>
 	<!-- マイページ画面	-->
 	<form th:action="@{/mypage/user-show-mypage}" method="GET">
 		<input type="submit" value="My Page" class="btn">

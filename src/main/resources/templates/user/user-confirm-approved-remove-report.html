@@ -27,6 +27,7 @@
 	</table>
 	<br>
 
+<div class="confirm-btn-wrapper">
     <form th:action="@{/user-confirm-remove-help-report}" method="POST" th:object="${userNotApprovedHelpListForm}">
 		<input type="hidden" th:field="*{not_approved_help_id}">
 		<input type="hidden" th:field="*{reported_help_id}">
@@ -48,7 +49,7 @@
 		<input type="hidden" th:field="*{reported_flag}">
     	<input type="submit" value="もどる" class="btn">
    	</form>
-
+</div>
 	<br>
 	<a th:href="@{/user-top}">トップメニュー</a>
 

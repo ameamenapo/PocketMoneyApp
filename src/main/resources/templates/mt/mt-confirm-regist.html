@@ -26,7 +26,8 @@
 		</tr>
 	</table>
 	<br>
-
+	
+<div class="confirm-btn-wrapper">
     <form th:action="@{/mt-confirm-help-regist}" method="POST" th:object="${mtHelpRegistForm}">
     	<input type="hidden" th:field="*{helpName}">
     	<input type="hidden" th:field="*{helpAmomunt}">
@@ -38,7 +39,7 @@
     	<input type="hidden" th:field="*{helpAmomunt}">
     	<input type="submit" value="もどる" class="btn">
    	</form>
-
+</div>
 	<br>
 	<a th:href="@{/mt-top}">管理メニュー</a>
 
