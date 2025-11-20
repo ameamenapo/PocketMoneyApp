@@ -12,16 +12,19 @@
 	<!--ヘッダーフラグメント-->
 	<header th:replace="~{fragments/header :: header-fragment}"></header>
 
-	<div class="main">
-		<!--		<div th:if="${param.loggedIn}" style="color: green;">ログインしました。</div>-->
-		<div th:object="${bankAccountForm}">
-			<h2>あなたのお金</h2>
+
+	<!--		<div th:if="${param.loggedIn}" style="color: green;">ログインしました。</div>-->
+	<div th:object="${bankAccountForm}">
+		<h2>あなたのお金</h2>
+		<div class="main-wrapper">
+		<div class="user-money-wrapper">
 			<!-- 口座の預金を表示 bank_account_mstのfinancial_asset	 -->
-			<div th:if="${bankList} == null">口座が存在しません。</div>
-			<div th:if="${bankList} != null">
-				<div class="user-money" th:each="bank : ${bankList}">
+			<div th:if="${bankList} == null" class="user-money">口座が存在しません。</div>
+			<div th:if="${bankList} != null" class="user-money">
+				<div  th:each="bank : ${bankList}">
 					<p th:text="${bank.financial_asset} + '円'"></p>
 				</div>
+			</div>
 			</div>
 
 			<div class="confirm-btn-wrapper">
@@ -43,12 +46,13 @@
 				<!--			</form>-->
 			</div>
 		</div>
-	</div>
 
-	<div sec:authorize="hasRole('ADMIN')">
-		<a th:href="@{/mt-top}">管理メニュー</a>
-	</div>
-	<a th:href="@{/adminuser}">共通メニュー</a>
 
+		<div sec:authorize="hasRole('ADMIN')">
+			<a th:href="@{/mt-top}">管理メニュー</a>
+		</div>
+		<a th:href="@{/adminuser}">共通メニュー</a>
+
+	</div>
 </body>
 </html>

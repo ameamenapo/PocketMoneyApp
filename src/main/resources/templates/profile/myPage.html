@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,80 +11,114 @@
 <body>
 	<!--ヘッダーフラグメント-->
 	<header th:replace="~{fragments/header :: header-fragment}"></header>
-	
+
 	<h2>My Page</h2>
 	<div class="main-wrapper">
 		<div class="mypage-wrapper">
 			<!----------------------------------------------		画像エリア------------------------------------------------>
 			<div class="myimg-wrapper">
-
-				<!--	user_image_mstに画像が登録されていない場合	-->
-				<div th:if="${imageSrc} == null">No Image</div>
-				<!--						user_image_mstに画像が登録されいる場合	-->
-				<div th:if="${imageSrc} != null">
-					<img th:src="${imageSrc}" alt="アップロード画像" width="300">
+				<!--画像表示エリア-->
+				<div class="myimg-area">
+					<!--	user_image_mstに画像が登録されていない場合	-->
+					<div th:if="${imageSrc} == null" class="myimg">No Image</div>
+					<!--						user_image_mstに画像が登録されいる場合	-->
+					<div th:if="${imageSrc} != null" class="myimg">
+						<img th:src="${imageSrc}" alt="アップロード画像" width="300">
+					</div>
 				</div>
-
 				<!--画像変更ボタン-->
-				<form th:action="@{/images/edit}" method="get" enctype="multipart/form-data">
-					<input type="hidden" name="image_id" th:value="${userImage.image_id}">
-					<input type="hidden" name="user_id" th:value="${userImage.user_id}">
-					<input type="hidden" name="image_data" th:value="${userImage.image_data}">
-					<input type="hidden" name="image_name" th:value="${userImage.image_name}">
-					<input type="hidden" name="image_type" th:value="${userImage.image_type}">
-					<button type="submit">Image Change</button>
-				</form>
+				<div class="myimg-btn-area">
+					<form th:action="@{/images/edit}" method="get"
+						enctype="multipart/form-data">
+						<input type="hidden" name="image_id"
+							th:value="${userImage.image_id}"> <input type="hidden"
+							name="user_id" th:value="${userImage.user_id}"> <input
+							type="hidden" name="image_data"
+							th:value="${userImage.image_data}"> <input type="hidden"
+							name="image_name" th:value="${userImage.image_name}"> <input
+							type="hidden" name="image_type"
+							th:value="${userImage.image_type}">
+						<button type="submit">Image Change</button>
+					</form>
+				</div>
 			</div>
 			<!----------------------------------------------		プロフィールエリア------------------------------------------------>
 			<div class="profile-wrapper">
 				<!--				<div th:object="${ProfileRegistForm}">-->
 				<!--	プロフィール名	-->
-				<div th:if="${userProfile.profile_name} == null">No Name</div>
-				<div th:if="${userProfile.profile_name} != null">
-					<p th:text="${userProfile.profile_name}"></p>
+				<div class="profile-contents">
+					<div class="item-title">Name</div>
+					<div th:if="${userProfile.profile_name} == null"
+						class="item-contents">No Name</div>
+					<div th:if="${userProfile.profile_name} != null"
+						class="item-contents">
+						<p th:text="${userProfile.profile_name}"></p>
+					</div>
 				</div>
 				<!--	生年月日（年）	-->
-				<div th:if="${userProfile.birth_year} == null">-</div>
-				<div th:if="${userProfile.birth_year} != null">
-					<p th:text="${userProfile.birth_year} + '年'"></p>
-				</div>
-				<!--	生年月日（月）	-->
-				<div th:if="${userProfile.birth_month} == null">-</div>
-				<div th:if="${userProfile.birth_month} != null">
-					<p th:text="${userProfile.birth_month} +'月'"></p>
-				</div>
-				<!--	生年月日（日）	-->
-				<div th:if="${userProfile.birth_day} == null">-</div>
-				<div th:if="${userProfile.birth_day} != null">
-					<p th:text="${userProfile.birth_day}+ '日'"></p>
+				<div class="profile-contents">
+					<div class="item-title">Birthday</div>
+					<div class="item-contents">
+						<div th:if="${userProfile.birth_year} == null" class="item-birth">-</div>
+						<div th:if="${userProfile.birth_year} != null" class="item-birth">
+							<p th:text="${userProfile.birth_year} + '年'"></p>
+						</div>
+						<!--	生年月日（月）	-->
+						<div th:if="${userProfile.birth_month} == null" class="item-birth">-</div>
+						<div th:if="${userProfile.birth_month} != null" class="item-birth">
+							<p th:text="${userProfile.birth_month} +'月'"></p>
+						</div>
+						<!--	生年月日（日）	-->
+						<div th:if="${userProfile.birth_day} == null" class="item-birth">-</div>
+						<div th:if="${userProfile.birth_day} != null" class="item-birth">
+							<p th:text="${userProfile.birth_day}+ '日'"></p>
+						</div>
+					</div>
 				</div>
 				<!--	貯金目標	-->
-				<div th:if="${userProfile.saving_goal} == null">-</div>
-				<div th:if="${userProfile.saving_goal} != null">
-					<p th:text="${userProfile.saving_goal}"></p>
+				<div class="profile-contents">
+					<div class="item-title">貯金目標</div>
+					<div th:if="${userProfile.saving_goal} == null"
+						class="item-contents">-</div>
+					<div th:if="${userProfile.saving_goal} != null"
+						class="item-contents">
+						<p th:text="${userProfile.saving_goal}"></p>
+					</div>
 				</div>
 				<!--	欲しいもの	-->
-				<div th:if="${userProfile.what_i_want} == null">-</div>
-				<div th:if="${userProfile.what_i_want} != null">
-					<p th:text="${userProfile.what_i_want}"></p>
+				<div class="profile-contents">
+					<div class="item-title">今欲しいもの</div>
+					<div th:if="${userProfile.what_i_want} == null"
+						class="item-contents">-</div>
+					<div th:if="${userProfile.what_i_want} != null"
+						class="item-contents">
+						<p th:text="${userProfile.what_i_want}"></p>
+					</div>
 				</div>
 				<!--	コメント	-->
-				<div th:if="${userProfile.comments} == null">-</div>
-				<div th:if="${userProfile.comments} != null">
-					<p th:text="${userProfile.comments}"></p>
+				<div class="profile-contents">
+					<div class="item-title">コメント</div>
+					<div th:if="${userProfile.comments} == null" class="item-contents">-</div>
+					<div th:if="${userProfile.comments} != null" class="item-contents">
+						<p th:text="${userProfile.comments}"></p>
+					</div>
 				</div>
-				<!--				</div>-->
 				<!--プロフィール変更ボタン-->
 				<form th:action="@{/profile/edit}" method="post">
-					<input type="hidden" name="profile_id" th:value="${userProfile.profile_id}">
-					<input type="hidden" name="user_id" th:value="${userProfile.user_id}">
-					<input type="hidden" name="profile_name" th:value="${userProfile.profile_name}">
-					<input type="hidden" name="birth_year" th:field="${userProfile.birth_year}">
-					<input type="hidden" name="birth_year" th:field="${userProfile.birth_month}">
-					<input type="hidden" name="birth_year" th:field="${userProfile.birth_day}">
-					<input type="hidden" name="birth_year" th:field="${userProfile.saving_goal}">
-					<input type="hidden" name="birth_year" th:field="${userProfile.what_i_want}">
-					<input type="hidden" name="birth_year" th:field="${userProfile.comments}">
+					<input type="hidden" name="profile_id"
+						th:value="${userProfile.profile_id}"> <input type="hidden"
+						name="user_id" th:value="${userProfile.user_id}"> <input
+						type="hidden" name="profile_name"
+						th:value="${userProfile.profile_name}"> <input
+						type="hidden" name="birth_year"
+						th:field="${userProfile.birth_year}"> <input type="hidden"
+						name="birth_year" th:field="${userProfile.birth_month}"> <input
+						type="hidden" name="birth_year"
+						th:field="${userProfile.birth_day}"> <input type="hidden"
+						name="birth_year" th:field="${userProfile.saving_goal}"> <input
+						type="hidden" name="birth_year"
+						th:field="${userProfile.what_i_want}"> <input
+						type="hidden" name="birth_year" th:field="${userProfile.comments}">
 					<button type="submit">Profile Edit</button>
 				</form>
 			</div>

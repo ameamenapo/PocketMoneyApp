@@ -102,9 +102,14 @@ td {
 /***************共通 end*********************************************************************/
 
 /* user-top.html */
+.user-money-wrapper {
+	display: flex;
+	justify-content: center; /* 主軸（横方向）を中央揃え */
+	align-items: center; /* 交差軸（縦方向）を中央揃え */
+}
+
 .user-money {
-	text-align:center;
-	width: 70%;
+	width: 100%;
 	border-radius: 50px;
 	padding: 30px 60px;
 	background-color: #FFFFFF;
@@ -223,6 +228,53 @@ td {
 	flex-wrap: no-wrap;
 	justify-content: center; /* 主軸（横方向）を中央揃え */
 	align-items: center; /* 交差軸（縦方向）を中央揃え */
+	width: 100%;
+}
+
+.myimg-wrapper {
+	width: 50%;
+	box-sizing: border-box; /* padding や border が幅超過しないように */
+}
+
+.myimg-area {
+	display: flex;
+	justify-content: center; /* 横方向の中央揃え */
+	align-items: center; /* 縦方向の中央揃え */
+	width: 100%;
+}
+
+.myimg {
+	width: 25vw;
+	height: 25vw;
+	border-radius: 50%;
+	overflow: hidden; /* 子要素(img)が丸枠からはみ出さない */
+}
+
+.myimg img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.profile-wrapper {
+	width: 50%;
+	box-sizing: border-box; /* padding や border が幅超過しないように */
+}
+
+.profile-contents {
+	display: flex;
+	flex-direction: row; /*横並び・左から右（デフォルト）*/
+	flex-wrap: wrap;
+	justify-content: center; /* 主軸（横方向）を中央揃え */
+	align-items: center; /* 交差軸（縦方向）を中央揃え */
+}
+
+.item-title {
+	width: 50%;
+}
+
+.item-contents {
+	width: 50%;
 }
 
 /***************myPage.html end*********************************************************************/
