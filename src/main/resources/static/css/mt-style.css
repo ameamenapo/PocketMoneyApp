@@ -232,7 +232,7 @@ td {
 }
 
 .myimg-wrapper {
-	width: 50%;
+	width: 30%;
 	box-sizing: border-box; /* padding や border が幅超過しないように */
 }
 
@@ -244,8 +244,8 @@ td {
 }
 
 .myimg {
-	width: 25vw;
-	height: 25vw;
+	width: 15vw;
+	height: 15vw;
 	border-radius: 50%;
 	overflow: hidden; /* 子要素(img)が丸枠からはみ出さない */
 }
@@ -257,7 +257,7 @@ td {
 }
 
 .profile-wrapper {
-	width: 50%;
+	width: 70%;
 	box-sizing: border-box; /* padding や border が幅超過しないように */
 }
 
@@ -271,10 +271,15 @@ td {
 
 .item-title {
 	width: 50%;
+	text-align:left;
 }
 
 .item-contents {
 	width: 50%;
+/*	item-birthクラスふってる生年月日を、横並びにして結合したいためflexをつける*/
+	display: flex;
+	flex-direction: row; /*横並び・左から右（デフォルト）*/
+	justify-content: center; /* これを追加 */
 }
 
 /***************myPage.html end*********************************************************************/

@@ -58,7 +58,9 @@
 		<input type="submit" value="更新実行" class="btn">
 	</form>
 
-	<form th:action="@{/profile/update}" method="POST" th:object="${profileEditForm}">
+	<form th:action="@{/profile/edit}"  method="POST" th:object="${profileEditForm}">
+		<input type="hidden" th:field="*{profile_id}">
+		<input type="hidden" th:field="*{user_id}">
 		<input type="hidden" th:field="*{profile_name}">
 		<input type="hidden" th:field="*{birth_year}">
 		<input type="hidden" th:field="*{birth_month}">
