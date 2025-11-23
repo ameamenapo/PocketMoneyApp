@@ -2,22 +2,51 @@
 /***************共通 start*******************************************************/
 /*文字サイズを基本20pxとして、他の箇所のfont-sizeをrem指定にする！*/
 html {
-  font-size: 20px;
+	font-size: 20px;
 }
 
 header {
-/*	ヘッダーを画面の15%にして、他を画面の80%にしている*/
-/*adminUserView.htmlのheight参照*/
+	/*	ヘッダーを画面の15%にして、他を画面の80%にしている*/
+	/*adminUserView.htmlのheight参照*/
 	height: 15vh;
 }
 
 body {
 	background-color: #4DA8DA;
+	text-align: center;
+}
+
+h1 {
+	font-size: 1.6rem;
+	color: #FFFFFF;
+}
+
+h2 {
+	font-size: 1.4rem;
+	color: #FFFFFF;
+
+    padding-bottom: 6px;
+    margin:0 auto;
+}
+
+h3 {
+	font-size: 1.2rem;
+	color: #FFFFFF;
+}
+p {
+	    margin:0 auto;
+	    	font-size: 0.7rem;
+}
+a {
+	/*    text-decoration: none;*/
+	color: #FFFFFF;
 }
 
 .auth-status {
 	text-align: right;
+	font-size: 0.7rem;
 }
+
 
 .auth-message {
 	text-align: right;
@@ -53,8 +82,7 @@ body {
 	text-align: center;
 	padding: 4px 20px;
 	font-size: 0.6rem;
-	/*	color: blue;*/
-	color: #fff;;
+	color: #fff;
 }
 
 .logoutBtn:hover {

@@ -1,25 +1,9 @@
 @charset "UTF-8";
 
 /***************共通 start*******************************************************/
-body {
-	text-align: center;
-}
-
-h1 {
-	font-size: 1.6rem;
-	color: #FFFFFF;
-}
-
-h2 {
-	font-size: 1.4rem;
-	color: #FFFFFF;
-	padding-top: 6px;
-	padding-bottom: 6px;
-}
-
 /* 通常のボタン */
 .btn {
-	border: 2px solid #FFFFFF;
+	border: 1px solid #FFFFFF;
 	padding: 4px 20px;
 	font-size: 20px;
 	color: #FFFFFF;;
@@ -29,7 +13,10 @@ h2 {
 
 .btn:hover {
 	color: #FFFFFF;
+	border: 1px solid #FFFFFF;
 	background: #FFD66B;
+	/*	transform: scale(1.05);*/
+	transition: 0.2s;
 }
 
 /* コメント入力の幅 */
@@ -37,9 +24,9 @@ input.catch {
 	width: 400px;
 }
 
-.inputSize {
-	width: 300px;
-	height: 20px;
+input.comment {
+	width: 400px;
+	height: 100px;
 }
 
 .error-msg {
@@ -59,6 +46,7 @@ th {
 	text-align: center;
 	background-color: #4753A7;
 	height: 32px;
+	color: #FFFFFF;
 }
 
 td {
@@ -174,12 +162,16 @@ td {
 }
 
 .mtTopMenuBtn:hover, .mtTopMenuBtn:active, .mtTopMenuBtn:focus {
-	background: #09C289;;
+	background: #09C289;
+	transform: scale(1.05);
+	transition: 0.2s;
 }
 
 .userHelpMenuBtn:hover, .userHelpMenuBtn:active, .userHelpMenuBtn:focus
 	{
-	background: #09C289;;
+	background: #09C289;
+	transform: scale(1.05);
+	transition: 0.2s;
 }
 
 .flex-parent {
@@ -193,12 +185,14 @@ td {
 .flex-child {
 	padding: 0; /* paddingを消す（inputとサイズを同じにする） */
 	height: 250px;
-	width: 250px;
-	background: #09C289;
-	color: #FFFFFF;
-	margin: 30px; /* 外側の余白 */
+	width: 250px; background : #09C289; color : #FFFFFF; margin : 30px;
+	/* 外側の余白 */
 	border-radius: 20px; /* 角丸指定 */
 	overflow: hidden; /* はみ出し防止 */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	color: #FFFFFF;
+	margin: 30px;
+	background: #09C289;
 }
 
 .flex-child form {
@@ -229,11 +223,27 @@ td {
 	justify-content: center; /* 主軸（横方向）を中央揃え */
 	align-items: center; /* 交差軸（縦方向）を中央揃え */
 	width: 100%;
+	/*	背景を重ねるため*/
+	position: relative;
+	overflow-x: hidden; /*  横へのはみ出しを強制的にカット */
+}
+/* 背景を広げる疑似要素（画像の後ろに回る） */
+.mypage-wrapper::before {
+	content: "";
+	position: absolute;
+	left: 17vw;
+	top: 0;
+	width: 100%;
+	height: 100%; /* 残り全部を背景にする */
+	background: #D1DEE9;
+	z-index: 0;
+	top: 0;
 }
 
 .myimg-wrapper {
-	width: 30%;
-	box-sizing: border-box; /* padding や border が幅超過しないように */
+	width: 40%;
+	position: relative;
+	z-index: 2; /* 画像を最前面にする */
 }
 
 .myimg-area {
@@ -248,6 +258,15 @@ td {
 	height: 15vw;
 	border-radius: 50%;
 	overflow: hidden; /* 子要素(img)が丸枠からはみ出さない */
+	border: 80px solid #9FC0DE; /* 枠の色・太さ */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 影付け（オプション） */
+	background: #FFFFFF;
+	/* て「No Image」を中央に！ */
+	display: flex;
+	justify-content: center; /* 横方向真ん中 */
+	align-items: center; /* 縦方向ど真ん中 */
+	font-size: 0.5rem;
+	color: #555;
 }
 
 .myimg img {
@@ -257,29 +276,173 @@ td {
 }
 
 .profile-wrapper {
-	width: 70%;
+	width: 60%;
 	box-sizing: border-box; /* padding や border が幅超過しないように */
+	/*	背景を重ねるため*/
+	position: relative;
+	z-index: 1;
+}
+/* 背景を上に伸ばす疑似要素 */
+.profile-wrapper::before {
+	content: "";
+	position: absolute;
+	/*	left: 0;*/
+	/*	top: 0; */
+	width: 100%;
+	height: 100%; /* 上に伸ばす量 */
+	background: #D1DEE9;
+	z-index: -1;
+	height: 100%;
 }
 
 .profile-contents {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.item-title {
+	width: 20%;
+	text-align: left;
+	color: #FFFFFF;
+}
+
+.item-contents {
+	width: 80%;
+	text-align: left;
+	/*	flex: 1 1 auto;*/
+}
+
+.item-contents.birthday {
+	display: flex;
+	flex-direction: row;
+	gap: 4px;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.item-contents  p {
+	text-align: left;
+	padding-right: 10px;
+}
+
+.mypg-btn-area {
+	display: flex;
+	justify-content: flex-end;
+}
+
+/***************myPage.html end*********************************************************************/
+
+/***************ImageUpload.html start*********************************************************************/
+.img-up-wrapper {
 	display: flex;
 	flex-direction: row; /*横並び・左から右（デフォルト）*/
 	flex-wrap: wrap;
 	justify-content: center; /* 主軸（横方向）を中央揃え */
 	align-items: center; /* 交差軸（縦方向）を中央揃え */
+	width: 100%;
+	height: 100%;
+	margin-bottom: 10px;
 }
 
-.item-title {
+.img-smpl-wrapper {
 	width: 50%;
-	text-align:left;
-}
-
-.item-contents {
-	width: 50%;
-/*	item-birthクラスふってる生年月日を、横並びにして結合したいためflexをつける*/
+	height: 100%;
 	display: flex;
-	flex-direction: row; /*横並び・左から右（デフォルト）*/
-	justify-content: center; /* これを追加 */
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 }
 
-/***************myPage.html end*********************************************************************/
+.img-smpl {
+	width: 25vw;
+	height: 25vw;
+	border-radius: 50%;
+	/*	border: 20px solid #9FC0DE; */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 影付け（オプション） */
+	background: #FFFFFF;
+	/* て「No Image」を中央に！ */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.5rem;
+	color: #555;
+	overflow: hidden;
+}
+
+.img-smpl img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain; /* ←画像をはみ出さないように調整 */
+}
+
+.img-up-btn-wrapper {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+}
+
+.img-up-btn-wrapper form {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center; /* 主軸（横方向）を中央揃え */
+	align-items: center; /* 交差軸（縦方向）を中央揃え */
+	width: 100%;
+	gap: 2px; /* ボタン同士の余白 */
+}
+
+.img-up-btn-wrapper p {
+	font-size: 0.7rem;
+}
+
+/* 丸いボタンの基本デザイン */
+.circle-btn {
+	width: 15vw;
+	height: 15vw;
+	border-radius: 50%;
+	background: #80D8C3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	cursor: pointer;
+	color: #FFFFFF;
+	font-size: 0.7rem;
+	font-weight: bold;
+	border: none;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* button は label と違い display:flex にする */
+button.circle-btn {
+	border: none;
+}
+
+/* hover 時 */
+.circle-btn:hover {
+	background: #09C289;
+	transform: scale(1.05);
+	transition: 0.2s;
+}
+
+/***************ImageUpload.html end*********************************************************************/
+/***************profielEdit.html start*********************************************************************/
+.profile-edit-wrapper form {
+	margin-bottom: 10px;
+
+}
+.profile-edit-wrapper button {
+		margin-top: 10px;
+}
+.right-btn {
+	    margin-left: auto;
+
+}
+
+
+
+
+/***************profielEdit.html end*********************************************************************/

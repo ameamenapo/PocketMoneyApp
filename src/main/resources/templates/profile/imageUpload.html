@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,33 +11,47 @@
 <body>
 	<!--ヘッダーフラグメント-->
 	<header th:replace="~{fragments/header :: header-fragment}"></header>
-	
+
 	<h2>画像アップロード</h2>
-	<form th:action="@{/images/upload}" method="post" enctype="multipart/form-data">
-
-		<input type="hidden" name="image_id" th:value="${userImage.image_id}">
-		<input type="hidden" name="user_id" th:value="${userImage.user_id}">
-		<input type="hidden" name="image_data" th:value="${userImage.image_data}">
-		<input type="hidden" name="image_name" th:value="${userImage.image_name}">
-		<input type="hidden" name="image_type" th:value="${userImage.image_type}">
-		<input type="file" name="file" required>
-		<button type="submit">アップロード</button>
-	</form>
-
-	<hr>
-	<p th:text="${msg}"></p>
-	<h3>My Page用画像</h3>
-	<div th:object="${UserImageForm}">
-
-		<div th:if="${imageSrc} == null">No Image</div>
-		<div th:if="${imageSrc} != null">
-			<img th:src="${imageSrc}" alt="アップロード画像" width="300">
+	<div class="main-wrapper">
+		<div class="img-up-wrapper">
+			<!------------------------  画像サンプルエリア  ---------------------------------------------------------->
+			<div class="img-smpl-wrapper">
+				<div th:if="${msg} != null">
+					<p th:text="${msg}"></p>
+				</div>
+				<h3>Sample</h3>
+				<div th:object="${UserImageForm}">
+					<div th:if="${imageSrc} == null" class="img-smpl">No Image</div>
+					<div th:if="${imageSrc} != null" class="img-smpl">
+						<img th:src="${imageSrc}" alt="アップロード画像" width="300">
+					</div>
+				</div>
+			</div>
+			<!------------------------  画像uploadボタンエリア  ---------------------------------------------------------->
+			<div class="img-up-btn-wrapper">
+				<form th:action="@{/images/upload}" method="post"
+					enctype="multipart/form-data">
+					<input type="hidden" name="image_id"
+						th:value="${userImage.image_id}"> <input type="hidden"
+						name="user_id" th:value="${userImage.user_id}"> <input
+						type="hidden" name="image_data" th:value="${userImage.image_data}">
+					<input type="hidden" name="image_name"
+						th:value="${userImage.image_name}"> <input type="hidden"
+						name="image_type" th:value="${userImage.image_type}">
+						<p>↓画像を選択してください。</p>
+						<label for="fileBtnText" class="circle-btn">ファイルを選択</label> <input
+						type="file" name="file" id="fileBtnText" style="display: none"
+						required>
+						<p>↓アップロードボタンを押すと、画像を更新できます。</p>
+					<button type="submit" class="circle-btn upload-btn">アップロード</button>
+				</form>
+			</div>
 		</div>
-
+		<!-- マイページ画面	-->
+		<form th:action="@{/mypage/user-show-mypage}" method="GET">
+			<input type="submit" value="My Page" class="btn">
+		</form>
 	</div>
-	<!-- マイページ画面	-->
-	<form th:action="@{/mypage/user-show-mypage}" method="GET">
-		<input type="submit" value="My Page" class="btn">
-	</form>
 </body>
 </html>

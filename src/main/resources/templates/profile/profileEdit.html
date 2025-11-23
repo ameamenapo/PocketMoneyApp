@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,50 +11,54 @@
 <body>
 	<!--ヘッダーフラグメント-->
 	<header th:replace="~{fragments/header :: header-fragment}"></header>
-	
+
 	<h2>プロフィール編集</h2>
-	<br>
-	<div th:if="${msg} != null">
-		<p th:text="${msg}"></p>
+	<div class="main-wrapper">
+		<div class="profile-edit-wrapper">
+			<div th:if="${msg} != null">
+				<p th:text="${msg}"></p>
+			</div>
+
+			<form th:action="@{/profile/update}" method="POST"
+				th:object="${profileEditForm}">
+				<input type="hidden" th:field="*{profile_id}"> <input
+					type="hidden" th:field="*{user_id}"> <br>【プロフィール名】<br>
+				<input type="text" th:field="*{profile_name}" class="catch">
+				<br>
+				<div th:if="${#fields.hasErrors('profile_name')}"
+					th:errors="*{profile_name}" class="error-msg"></div>
+				<br> 【生年月日（年）】<br> <input type="text"
+					th:field="*{birth_year}" class="catch"> <br>
+				<div th:if="${#fields.hasErrors('birth_year')}"
+					th:errors="*{birth_year}" class="error-msg"></div>
+				<br> 【生年月日（月）】<br> <input type="text"
+					th:field="*{birth_month}" class="catch"> <br>
+				<div th:if="${#fields.hasErrors('birth_month')}"
+					th:errors="*{birth_month}" class="error-msg"></div>
+				<br> 【生年月日（日）】<br> <input type="text"
+					th:field="*{birth_day}" class="catch"> <br>
+				<div th:if="${#fields.hasErrors('birth_day')}"
+					th:errors="*{birth_day}" class="error-msg"></div>
+				<br>【貯蓄目標】<br> <input type="text"
+					th:field="*{saving_goal}" class="catch"> <br>
+				<div th:if="${#fields.hasErrors('saving_goal')}"
+					th:errors="*{saving_goal}" class="error-msg"></div>
+				<br>【欲しいもの】<br> <input type="text"
+					th:field="*{what_i_want}" class="catch"> <br>
+				<div th:if="${#fields.hasErrors('what_i_want')}"
+					th:errors="*{what_i_want}" class="error-msg"></div>
+				<br>【コメント】<br> <input type="text" th:field="*{comments}"
+					class="comment"> <br>
+				<div th:if="${#fields.hasErrors('comments')}"
+					th:errors="*{comments}" class="error-msg"></div>
+				<button type="submit" class="btn">更新</button>
+			</form>
+			<!-- マイページ画面	-->
+			<form th:action="@{/mypage/user-show-mypage}" method="GET" class="right-btn">
+				<input type="submit" value="My Page" class="btn">
+			</form>
+		</div>
+
 	</div>
-
-	<form th:action="@{/profile/update}" method="POST" th:object="${profileEditForm}">
-    	<input type="hidden" th:field="*{profile_id}">
-    	<input type="hidden" th:field="*{user_id}">
-		<br>【プロフィール名】<br>
-		<input type="text" th:field="*{profile_name}">
-		<br>
-		<div th:if="${#fields.hasErrors('profile_name')}" th:errors="*{profile_name}" class="error-msg"></div>
-		<br> 【生年月日（年）】<br>
-		<input type="text" th:field="*{birth_year}" class="catch">
-		<br>
-		<div th:if="${#fields.hasErrors('birth_year')}" th:errors="*{birth_year}" class="error-msg"></div>
-		<br> 【生年月日（月）】<br>
-		<input type="text" th:field="*{birth_month}" class="catch">
-		<br>
-		<div th:if="${#fields.hasErrors('birth_month')}" th:errors="*{birth_month}" class="error-msg"></div>
-		<br> 【生年月日（日）】<br>
-		<input type="text" th:field="*{birth_day}" class="catch">
-		<br>
-		<div th:if="${#fields.hasErrors('birth_day')}" th:errors="*{birth_day}" class="error-msg"></div>
-		<br>【貯蓄目標】<br>
-		<input type="text" th:field="*{saving_goal}">
-		<br>
-		<div th:if="${#fields.hasErrors('saving_goal')}" th:errors="*{saving_goal}" class="error-msg"></div>
-		<br>【欲しいもの】<br>
-		<input type="text" th:field="*{what_i_want}">
-		<br>
-		<div th:if="${#fields.hasErrors('what_i_want')}" th:errors="*{what_i_want}" class="error-msg"></div>
-		<br>【コメント】<br>
-		<input type="text" th:field="*{comments}">
-		<br>
-		<div th:if="${#fields.hasErrors('comments')}" th:errors="*{comments}" class="error-msg"></div>
-		<button type="submit">更新</button>
-	</form>
-
-	<!-- マイページ画面	-->
-	<form th:action="@{/mypage/user-show-mypage}" method="GET">
-		<input type="submit" value="My Page" class="btn">
-	</form>
 </body>
 </html>
