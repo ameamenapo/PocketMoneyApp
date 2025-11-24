@@ -33,6 +33,8 @@ GRANT ALL PRIVILEGES ON allo_db.* TO allo_user;
 
 #### 1.ログイン
 
+ログインURL:http://localhost:8080/login
+
 このアプリには、初めから2つのアカウントが用意されています。
 
 まずユーザー名adminの方のアカウントでログインしましょう。（testの方は権限が低く、管理者メニューが出ません。一応作っておいた程度のものです。）
