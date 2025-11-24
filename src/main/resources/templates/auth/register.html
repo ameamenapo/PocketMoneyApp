@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<link rel="stylesheet" th:href="@{/css/reset.css}">-->
+<link rel="stylesheet" th:href="@{/css/auth-style.css}">
+<link rel="stylesheet" th:href="@{/css/common-style.css}">
+<title>新規アカウント</title>
+</head>
+
+<body>
+    <h2>新規アカウント作成</h2>
+
+    <!-- エラー or 成功表示 -->
+    <div th:if="${error}" style="color:red">
+        <p th:text="${error}"></p>
+    </div>
+    <div th:if="${success}" style="color:green">
+        <p th:text="${success}"></p>
+    </div>
+
+    <form th:action="@{/user/register}" method="post">
+        <label>ユーザー名</label><br>
+        <input type="text" name="username"><br>
+
+        <label>パスワード</label><br>
+        <input type="password" name="password"><br>
+
+        <label>パスワード（確認）</label><br>
+        <input type="password" name="passwordConfirm"><br>
+
+        <button type="submit">登録する</button>
+    </form>
+	<a th:href="@{/login}">ログイン画面へ</a>
+</body>
+
+</html>

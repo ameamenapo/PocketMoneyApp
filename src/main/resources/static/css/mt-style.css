@@ -24,7 +24,7 @@ input.catch {
 	width: 400px;
 }
 
-input.comment {
+textarea.comment {
 	width: 400px;
 	height: 100px;
 }
@@ -53,6 +53,7 @@ td {
 	border: 1px solid aliceblue;
 	text-align: center;
 	height: 24px;
+		background-color: #9FC0DE;
 }
 
 .help-list {
@@ -185,7 +186,10 @@ td {
 .flex-child {
 	padding: 0; /* paddingを消す（inputとサイズを同じにする） */
 	height: 250px;
-	width: 250px; background : #09C289; color : #FFFFFF; margin : 30px;
+	width: 250px;
+	background: #09C289;
+	color: #FFFFFF;
+	margin: 30px;
 	/* 外側の余白 */
 	border-radius: 20px; /* 角丸指定 */
 	overflow: hidden; /* はみ出し防止 */
@@ -221,23 +225,27 @@ td {
 	flex-direction: row; /*横並び・左から右（デフォルト）*/
 	flex-wrap: no-wrap;
 	justify-content: center; /* 主軸（横方向）を中央揃え */
-	align-items: center; /* 交差軸（縦方向）を中央揃え */
+	align-items: stretch; /* ← 最重要！高さを揃えて伸ばす */
+	height: auto; /* ← 親の高さを内容に合わせて伸ばす */
 	width: 100%;
 	/*	背景を重ねるため*/
 	position: relative;
 	overflow-x: hidden; /*  横へのはみ出しを強制的にカット */
+	min-height: 100%;
+	height: auto; /* 重要：ページ全体の高さまで伸びる */
 }
 /* 背景を広げる疑似要素（画像の後ろに回る） */
 .mypage-wrapper::before {
 	content: "";
 	position: absolute;
 	left: 17vw;
+	right: 0;
 	top: 0;
+	bottom: 0; /* ★これで高さが常に親に一致する */
 	width: 100%;
-	height: 100%; /* 残り全部を背景にする */
+	/*height: 100%;  これで親の高さに連動して伸びる */
 	background: #D1DEE9;
 	z-index: 0;
-	top: 0;
 }
 
 .myimg-wrapper {
@@ -281,18 +289,21 @@ td {
 	/*	背景を重ねるため*/
 	position: relative;
 	z-index: 1;
+	flex-grow: 1; /* ← これが最重要 */
+	display: flex;
+	flex-direction: column;
+	/*    justify-content: center; */
+	/*    height: 100%;*/
 }
 /* 背景を上に伸ばす疑似要素 */
 .profile-wrapper::before {
 	content: "";
 	position: absolute;
-	/*	left: 0;*/
-	/*	top: 0; */
-	width: 100%;
-	height: 100%; /* 上に伸ばす量 */
+	inset: 0; /* top, right, bottom, left を一括指定 */
+	/*	width: 100%;*/
+	/*	height: 100%;  上に伸ばす量 */
 	background: #D1DEE9;
 	z-index: -1;
-	height: 100%;
 }
 
 .profile-contents {
@@ -301,6 +312,11 @@ td {
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: flex-start;
+	margin-top: 10px;
+}
+
+.profile-wrapper .profile-contents:first-of-type {
+	margin-top: 20px; /* 一番上のコンテンツ（プロフィール名）だけ上のmarginを大きめにする */
 }
 
 .item-title {
@@ -326,11 +342,15 @@ td {
 .item-contents  p {
 	text-align: left;
 	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .mypg-btn-area {
 	display: flex;
 	justify-content: flex-end;
+	width: 100%;
+	margin-top: auto; /* 追加：これで一番下へ固定される */
+	padding-top: 20px; /* 任意：プロフィール内容との余白 */
 }
 
 /***************myPage.html end*********************************************************************/
@@ -344,7 +364,8 @@ td {
 	align-items: center; /* 交差軸（縦方向）を中央揃え */
 	width: 100%;
 	height: 100%;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
+		margin-top: 30px;
 }
 
 .img-smpl-wrapper {
@@ -354,11 +375,12 @@ td {
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
+	background: #9FC0DE;
 }
 
 .img-smpl {
-	width: 25vw;
-	height: 25vw;
+	width: 20vw;
+	height: 20vw;
 	border-radius: 50%;
 	/*	border: 20px solid #9FC0DE; */
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 影付け（オプション） */
@@ -370,6 +392,7 @@ td {
 	font-size: 0.5rem;
 	color: #555;
 	overflow: hidden;
+		margin-bottom: 30px;
 }
 
 .img-smpl img {
@@ -396,12 +419,13 @@ td {
 
 .img-up-btn-wrapper p {
 	font-size: 0.7rem;
+	margin-top: 20px;
 }
 
 /* 丸いボタンの基本デザイン */
 .circle-btn {
-	width: 15vw;
-	height: 15vw;
+	width: 10vw;
+	height: 10vw;
 	border-radius: 50%;
 	background: #80D8C3;
 	display: flex;
@@ -410,7 +434,7 @@ td {
 	text-align: center;
 	cursor: pointer;
 	color: #FFFFFF;
-	font-size: 0.7rem;
+	font-size: 0.6rem;
 	font-weight: bold;
 	border: none;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -432,17 +456,14 @@ button.circle-btn {
 /***************profielEdit.html start*********************************************************************/
 .profile-edit-wrapper form {
 	margin-bottom: 10px;
-
 }
+
 .profile-edit-wrapper button {
-		margin-top: 10px;
+	margin-top: 10px;
 }
+
 .right-btn {
-	    margin-left: auto;
-
+	margin-left: auto;
 }
-
-
-
 
 /***************profielEdit.html end*********************************************************************/

@@ -11,7 +11,12 @@
 
 <body>
 	<h1>LOG IN</h1>
-
+	<div th:if="${param.resetSuccess}" style="color: green;">
+	    パスワードを変更しました。
+	</div>
+	<div th:if="${param.registerSuccess}" style="color: green;">
+	    アカウントを作成しました。ログインしてください。
+	</div>
 	<div th:if="${param.error}" style="color: red;">
 		ユーザー名またはパスワードが正しくありません。</div>
 	<div class="form">
@@ -24,6 +29,8 @@
 					<button type="submit">ログイン</button>
 				</p>
 			</form>
+			<p><a th:href="@{/password/reset}">パスワードを忘れた場合</a></p>
+			<p><a th:href="@{/user/register}">新規アカウント作成</a></p>
 		</div>
 	</div>
 

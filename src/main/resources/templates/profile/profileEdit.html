@@ -47,14 +47,16 @@
 					th:field="*{what_i_want}" class="catch"> <br>
 				<div th:if="${#fields.hasErrors('what_i_want')}"
 					th:errors="*{what_i_want}" class="error-msg"></div>
-				<br>【コメント】<br> <input type="text" th:field="*{comments}"
-					class="comment"> <br>
+				<br>【コメント】<br>
+				<textarea th:field="*{comments}" class="comment"></textarea>
+				<br>
 				<div th:if="${#fields.hasErrors('comments')}"
 					th:errors="*{comments}" class="error-msg"></div>
 				<button type="submit" class="btn">更新</button>
 			</form>
 			<!-- マイページ画面	-->
-			<form th:action="@{/mypage/user-show-mypage}" method="GET" class="right-btn">
+			<form th:action="@{/mypage/user-show-mypage}" method="GET"
+				class="right-btn">
 				<input type="submit" value="My Page" class="btn">
 			</form>
 		</div>
