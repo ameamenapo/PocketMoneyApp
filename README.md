@@ -2,6 +2,30 @@
 
 このアプリは、ご家庭でお子さんにやってもらいたいお手伝いを登録して、そのお手伝いをお子さんがきちんと実施したら、設定されたお小遣いをお子さんの口座に振り込む、という擬似銀行口座アプリです。
 
+## DBの作成
+
+下記SQLを実行し、ローカルにデータベースを作ってください。（まだデプロイしてないためです。。）
+そのあとにアプリを起動すればアプリが使用可能です。
+
+**SQL**
+
+/*--★root で実行する-------------------------------------*/
+
+/* DB作成 */
+
+DROP DATABASE IF EXISTS allo_db;
+
+CREATE DATABASE allo_db CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+/* DBユーザを作成 */
+
+CREATE USER IF NOT EXISTS allo_user IDENTIFIED BY 'allo';
+
+/* 権限付与 */
+
+GRANT ALL PRIVILEGES ON allo_db.* TO allo_user;
+
+
 ## アプリ使用方法
 
 ### 【ご両親（管理者）側の使用方法】
