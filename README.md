@@ -10,20 +10,27 @@
 **SQL**
 
 1. MySQL に root でログイン
+
 mysql -u root -p
 
 2. データベースを作成
+
 CREATE DATABASE allo_db DEFAULT CHARACTER SET utf8mb4;
 
 3. 既存の allo_user を完全に削除
+
 DROP USER IF EXISTS 'allo_user'@'localhost';
+
 DROP USER IF EXISTS 'allo_user'@'%';
 
 4. allo_user を作成
+   
 CREATE USER 'allo_user'@'localhost' IDENTIFIED BY 'allo';
 
 5. 権限を付与
+    
 GRANT ALL PRIVILEGES ON allo_db.* TO 'allo_user'@'localhost';
+
 FLUSH PRIVILEGES;
 
 
