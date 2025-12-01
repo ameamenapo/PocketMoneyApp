@@ -9,21 +9,22 @@
 
 **SQL**
 
-/*--★root で実行する-------------------------------------*/
+1. MySQL に root でログイン
+mysql -u root -p
 
-/* DB作成 */
+2. データベースを作成
+CREATE DATABASE allo_db DEFAULT CHARACTER SET utf8mb4;
 
-DROP DATABASE IF EXISTS allo_db;
+3. 既存の allo_user を完全に削除
+DROP USER IF EXISTS 'allo_user'@'localhost';
+DROP USER IF EXISTS 'allo_user'@'%';
 
-CREATE DATABASE allo_db CHARACTER SET utf8 COLLATE utf8_general_ci;
+4. allo_user を作成
+CREATE USER 'allo_user'@'localhost' IDENTIFIED BY 'allo';
 
-/* DBユーザを作成 */
-
-CREATE USER IF NOT EXISTS allo_user IDENTIFIED BY 'allo';
-
-/* 権限付与 */
-
-GRANT ALL PRIVILEGES ON allo_db.* TO allo_user;
+5. 権限を付与
+GRANT ALL PRIVILEGES ON allo_db.* TO 'allo_user'@'localhost';
+FLUSH PRIVILEGES;
 
 
 ## アプリ使用方法
