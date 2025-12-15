@@ -21,12 +21,13 @@
 
 /* コメント入力の幅 */
 input.catch {
-	width: 400px;
+	width: 50vw;
+	height: 3vh;
 }
 
 textarea.comment {
-	width: 400px;
-	height: 100px;
+	width: 80vw;
+	height: 20vh;
 }
 
 .error-msg {
@@ -221,6 +222,7 @@ td {
 
 /***************myPage.html start*********************************************************************/
 .mypage-wrapper {
+	margin-top: 20px;
 	display: flex;
 	flex-direction: row; /*横並び・左から右（デフォルト）*/
 	flex-wrap: no-wrap;
@@ -352,6 +354,63 @@ td {
 	margin-top: auto; /* 追加：これで一番下へ固定される */
 	padding-top: 20px; /* 任意：プロフィール内容との余白 */
 }
+/*******スマホ start*****************************/
+@media screen and (max-width: 767px) {
+	.mypage-wrapper {
+		flex-direction: column; /*横並び・左から右（デフォルト）*/
+	}
+	/* 背景を広げる疑似要素（画像の後ろに回る） */
+	.mypage-wrapper::before {
+
+		background: #D1DEE9;
+	}
+	.myimg-wrapper {
+		width: 100%;
+		background: #D1DEE9;
+	}
+	.myimg {
+	    margin-top: 20px;
+		width: 30vw;
+		height: 30vw;
+		border: 20px solid #9FC0DE;
+	}
+	.profile-wrapper {
+		width: 100%;
+		box-sizing: border-box; /* padding や border が幅超過しないように */
+		/*	背景を重ねるため*/
+		position: relative;
+		z-index: 1;
+		flex-grow: 1; /* ← これが最重要 */
+		display: flex;
+		flex-direction: column;
+		/*    justify-content: center; */
+		/*    height: 100%;*/
+	}
+	.profile-contents {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: flex-start;
+		margin-top: 10px;
+		margin-left: 10px;
+	}
+	.item-title {
+		width: 100%;
+
+	}
+	.item-contents {
+		text-align: center;
+	}
+	.item-contents.birthday {
+	    justify-content:center;
+	}
+	.mypg-btn-area {
+	    justify-content: center;
+	}
+	
+}
+/*******スマホ end******************************/
 
 /***************myPage.html end*********************************************************************/
 
@@ -434,12 +493,11 @@ td {
 	text-align: center;
 	cursor: pointer;
 	color: #FFFFFF;
-	font-size: 0.6rem;
+	font-size: 0.5rem;
 	font-weight: bold;
 	border: none;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
 /* button は label と違い display:flex にする */
 button.circle-btn {
 	border: none;
@@ -451,6 +509,27 @@ button.circle-btn {
 	transform: scale(1.05);
 	transition: 0.2s;
 }
+/*******スマホ start*****************************/
+@media screen and (max-width: 767px) {
+	.img-smpl-wrapper {
+		width: 100%;
+	}
+	.img-smpl {
+		width: 30vw;
+		height: 30vw;
+	}
+	.img-up-btn-wrapper {
+		width: 100%;
+	}
+	.img-up-btn-wrapper p {
+		font-size: 0.5rem;
+	}
+	.circle-btn {
+		width: 20vw;
+		height: 20vw;
+	}
+}
+/*******スマホ end******************************/
 
 /***************ImageUpload.html end*********************************************************************/
 /***************profielEdit.html start*********************************************************************/
