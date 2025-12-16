@@ -14,7 +14,7 @@
 	<h2>口座登録</h2>
 
 	<form th:action="@{/mt-account-regist}" method="POST" th:object="${bankAccountForm}">
-		【ユーザーID】<br> <input type="text" th:field="*{userName}" class="inputSize"><br>
+		【ユーザーID】<br> <input type="text" th:field="*{userName}" class="catch"><br>
 		<div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" class="error-msg"></div>
 		<br> 【所持金】<br> <input type="text" th:field="*{financial_asset}" class="catch"><br>
 		<div th:if="${#fields.hasErrors('financial_asset')}" th:errors="*{financial_asset}" class="error-msg"></div>
@@ -22,7 +22,9 @@
 	</form>
 
 	<br>
-	<a th:href="@{/mt-top}">管理メニュー</a>
+	<div class="link-wrapper">
+		<a th:href="@{/mt-top}">管理メニュー</a>
+	</div>
 
 </body>
 </html>

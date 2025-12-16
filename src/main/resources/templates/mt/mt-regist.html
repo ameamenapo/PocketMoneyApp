@@ -15,7 +15,7 @@
 
     <form th:action="@{/mt-regist}" method="POST" th:object="${mtHelpRegistForm}">
     	【お手伝い名】<br>
-    	<input type="text" th:field="*{helpName}" class="inputSize"><br>
+    	<input type="text" th:field="*{helpName}" class="catch"><br>
     	<div th:if="${#fields.hasErrors('helpName')}" th:errors="*{helpName}" class="error-msg"></div>
 		<br>
     	【お小遣い】<br>
@@ -25,11 +25,11 @@
     	<input type="submit" value="登録" class="btn">
     </form>
 
-
-
 	<br>
-	<a th:href="@{/mt-top}">管理メニュー</a>
-	<a th:href="@{/mt-show-help-menu}">お手伝いメニュー</a>
-
+	<div class="link-wrapper">
+		<a th:href="@{/mt-top}">管理メニュー</a>
+		<a th:href="@{/mt-show-help-menu}">お手伝いメニュー</a>
+	</div>
+	
 </body>
 </html>

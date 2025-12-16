@@ -25,7 +25,7 @@
 			<td th:text="*{help_name}"></td>
 		</tr>
 		<tr>
-			<td class="guide">【	お小遣い】</td>
+			<td class="guide">【お小遣い】</td>
 			<td th:text="*{help_ammount}"></td>
 		</tr>
 	</table>
@@ -54,7 +54,9 @@
    	</form>
 </div>
 	<br>
-	<a th:href="@{/mt-top}">管理メニュー</a>
+	<div class="link-wrapper">
+		<a th:href="@{/mt-top}">管理メニュー</a>
+	</div>
 
 </body>
 </html>

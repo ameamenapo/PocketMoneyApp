@@ -220,6 +220,23 @@ td {
 
 /***************confirm関連html end*********************************************************************/
 
+/***************mt-complete.html start*********************************************************************/
+.link-wrapper {
+	display: flex;
+	flex-wrap: wrap;        /* ★ 画面からはみ出たら折り返す */
+	justify-content: center;
+	gap: 12px;              /* リンク同士の間隔 */
+	margin-top: 20px;
+}
+
+.link-wrapper a {
+	text-decoration: underline;  /* 下線を表示 */
+	padding: 0;                  /* 余白を消す */
+	border: none;                /* 枠線を消す */
+	white-space: nowrap;    /* 文字の途中で改行させない */
+}
+/***************mt-complete.html end*********************************************************************/
+
 /***************myPage.html start*********************************************************************/
 .mypage-wrapper {
 	margin-top: 20px;

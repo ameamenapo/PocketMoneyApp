@@ -17,10 +17,10 @@
 	<form th:action="@{/mt-edit}" method="POST" th:object="${mtHelpEditForm}">
 		【お手伝いID】<br>
 		<p th:text="*{help_id}"></p>
-		<input type="hidden" th:field="*{help_id}">
+		<input type="hidden" th:field="*{help_id}" class="catch">
 		<div th:if="${#fields.hasErrors('help_id')}" th:errors="*{help_id}" class="error-msg"></div>
 		<br> 【お手伝い名】<br>
-		<input type="text" th:field="*{help_name}">
+		<input type="text" th:field="*{help_name}" class="catch">
 		<br>
 		<div th:if="${#fields.hasErrors('help_name')}" th:errors="*{help_name}" class="error-msg"></div>
 		<br> 【お小遣い】<br>
@@ -32,8 +32,10 @@
 	</form>
 
 	<br>
-	<a th:href="@{/mt-top}">管理メニュー</a>
-	<a th:href="@{/show-help-list}">もどる</a>
+	<div class="link-wrapper">
+		<a th:href="@{/mt-top}">管理メニュー</a>
+		<a th:href="@{/show-help-list}">もどる</a>
+	</div>
 
 </body>
 </html>

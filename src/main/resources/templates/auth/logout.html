@@ -12,6 +12,8 @@
 <div th:if="${param.loggedOut}">
     <p style="color: #FFFFFF;">ログアウトしました。</p>
 </div>
-<a th:href="@{/login}">ログイン画面へ</a>
+<div class="link-wrapper">
+	<a th:href="@{/login}">ログイン画面へ</a>
+</div>
 </body>
 </html>

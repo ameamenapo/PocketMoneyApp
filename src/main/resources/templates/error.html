@@ -12,8 +12,10 @@
 <p class="error-msg">エラーが発生しました。</p>
 <p class="error-msg" th:text= "${status} + '　' + ${error}"></p>
 <br>
-<!--遷移先は他のところにするか検討。-->
-<a th:href="@{/login}">ログインページに戻る</a>
+
+<div class="link-wrapper">
+	<a th:href="@{/login}">ログインページに戻る</a>
+</div>
 
 </body>
 </html>

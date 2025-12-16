@@ -17,12 +17,11 @@
 	<p th:text="${msg}"></p>
 	<br>
 	<br>
-	<!-- お手伝い登録画面へ遷移  -->
-	<a th:href="@{/mt-show-help-regist}">お手伝い追加登録</a>
-	<!-- お手伝い一覧 -->
-	<a th:href="@{/show-help-list}">お手伝い一覧</a>
-	<a th:href="@{/mt-top}">管理メニュー</a>
-	
+	<div class="link-wrapper">
+		<a th:href="@{/mt-show-help-regist}">お手伝い追加登録</a>
+		<a th:href="@{/show-help-list}">お手伝い一覧</a>
+		<a th:href="@{/mt-top}">管理メニュー</a>
+	</div>
 
 </body>
 </html>
