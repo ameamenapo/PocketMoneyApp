@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/common-style.css}">
+<link rel="stylesheet" th:href="@{/css/mt-style.css}">
+<title>完了</title>
+</head>
+<body>
+	<!--ヘッダーフラグメント-->
+	<header th:replace="~{fragments/header :: header-fragment}"></header>
+		
+	<h2>完了</h2>
+
+	<br>
+	<p>処理が完了しました。</p>
+	<p th:text="${msg}"></p>
+	<br>
+	<br>
+
+	<!-- お手伝い登録画面  -->
+	<a th:href="@{/user-show-help-list}">お手伝い追加登録</a>
+	<!-- お手伝い一覧-->
+	<div class="link-wrapper">
+		<a th:href="@{/user-show-myhelp-list}">Myリスト</a>
+		<a th:href="@{/user-top}">トップメニュー</a>
+	</div>
+
+
+</body>
+</html>

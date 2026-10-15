@@ -1,0 +1,17 @@
+<header th:fragment="header-fragment">
+	<div th:if="${param.loggedIn}" style="color: #FFFFFF"
+		class="auth-message">ログインしました。</div>
+	<div th:if="${param.loggedOut}" style="color: #FFFFFF;"
+		class="auth-message">ログアウトしました。</div>
+	<p sec:authorize="isAuthenticated()" class="auth-status">
+		ログインユーザー：<span sec:authentication="principal.username"></span><br>
+		ロール：<span sec:authentication="principal.authorities"></span>
+	</p>
+	<div class="logoutBtn-wrapper">
+		<form th:action="@{/logout}" method="post">
+
+			<button class="logoutBtn" type="submit">ログアウト</button>
+
+		</form>
+	</div>
+</header>

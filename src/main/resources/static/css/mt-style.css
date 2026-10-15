@@ -1,0 +1,565 @@
+@charset "UTF-8";
+
+/***************共通 start*******************************************************/
+/* 通常のボタン */
+.btn {
+	border: 1px solid #FFFFFF;
+	padding: 4px 20px;
+	font-size: 20px;
+	color: #FFFFFF;;
+	background-color: #80D8C3;
+	cursor: pointer;
+}
+
+.btn:hover {
+	color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+	background: #FFD66B;
+	/*	transform: scale(1.05);*/
+	transition: 0.2s;
+}
+
+/* コメント入力の幅 */
+input.catch {
+	width: 50vw;
+	height: 3vh;
+}
+
+textarea.comment {
+	width: 80vw;
+	height: 20vh;
+}
+
+.error-msg {
+	color: red;
+}
+
+table {
+	border: 1px solid aliceblue;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%; /* テーブル横幅 */
+	border-collapse: collapse; /* 境界線を共有 */
+}
+
+th {
+	border: 1px solid aliceblue;
+	text-align: center;
+	background-color: #4753A7;
+	height: 32px;
+	color: #FFFFFF;
+}
+
+td {
+	border: 1px solid aliceblue;
+	text-align: center;
+	height: 24px;
+		background-color: #9FC0DE;
+}
+
+.help-list {
+	background-color: #4DA8DA;
+}
+
+/* テーブル内ボタン */
+.tbtn {
+	border: 2px solid #FFFFFF;
+	padding: 2px 10px;
+	font-size: 16px;
+	color: #FFFFFF;
+	cursor: pointer;
+	background: #80D8C3;
+}
+
+.tbtn:hover {
+	color: #FFFFFF;
+	background: #FFD66B;
+}
+
+/* 確認画面用 */
+.confirm-table {
+	background-color: lightgray;
+	width: 50%; /* テーブル横幅 */
+}
+
+.confirm-table .guide {
+	width: 30%; /* テーブル横幅 */
+}
+
+.confirm-table td {
+	text-align: left;
+}
+/***************共通 end*********************************************************************/
+
+/* user-top.html */
+.user-money-wrapper {
+	display: flex;
+	justify-content: center; /* 主軸（横方向）を中央揃え */
+	align-items: center; /* 交差軸（縦方向）を中央揃え */
+}
+
+.user-money {
+	width: 100%;
+	border-radius: 50px;
+	padding: 30px 60px;
+	background-color: #FFFFFF;
+	margin: 50px 100px;
+}
+
+.user-money p {
+	font-size: 1.6rem;
+	color: 100;
+}
+/* user-help-menu.html */ /* mt-top.html　など */
+.main-wrapper {
+	width: 90vw;
+	margin: 0 auto;
+}
+
+.mtTopMenuBtn {
+	/****** 元々のinputタグの装飾をオフにする ********/
+	/* 背景色を無色に */
+	background: transparent;
+	/* 枠線を消す */
+	border: none;
+	/* クリックした際に枠線をnone消す */
+	outline: none;
+	/* 影を消す */
+	box-shadow: none;
+	/****** ここまで ******************************/
+	/* 自由に装飾するためにブロック化 */
+	display: block;
+	/* かざすとポインター */
+	cursor: pointer;
+	background: #80D8C3;
+	color: #FFFFFF;
+	font-size: 1.2rem;
+	height: 100%;
+	width: 100%;
+	border-radius: 20px;
+	width: 100%; /* 角丸指定 */
+}
+
+.userHelpMenuBtn {
+	/****** 元々のinputタグの装飾をオフにする ********/
+	/* 背景色を無色に */
+	background: transparent;
+	/* 枠線を消す */
+	border: none;
+	/* クリックした際に枠線をnone消す */
+	outline: none;
+	/* 影を消す */
+	box-shadow: none;
+	/****** ここまで ******************************/
+	/* 自由に装飾するためにブロック化 */
+	display: block;
+	/* かざすとポインター */
+	cursor: pointer;
+	background: #80D8C3;
+	color: #FFFFFF;
+	font-size: 1.2rem;
+	height: 250px;
+	width: 250px;
+	border-radius: 20px; /* 角丸指定 */
+}
+
+.mtTopMenuBtn:hover, .mtTopMenuBtn:active, .mtTopMenuBtn:focus {
+	background: #09C289;
+	transform: scale(1.05);
+	transition: 0.2s;
+}
+
+.userHelpMenuBtn:hover, .userHelpMenuBtn:active, .userHelpMenuBtn:focus
+	{
+	background: #09C289;
+	transform: scale(1.05);
+	transition: 0.2s;
+}
+
+.flex-parent {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center; /* 主軸（横方向）を中央揃え */
+	align-items: center; /* 交差軸（縦方向）を中央揃え */
+	padding: 10px;
+}
+
+.flex-child {
+	padding: 0; /* paddingを消す（inputとサイズを同じにする） */
+	height: 250px;
+	width: 250px;
+	background: #09C289;
+	color: #FFFFFF;
+	margin: 30px;
+	/* 外側の余白 */
+	border-radius: 20px; /* 角丸指定 */
+	overflow: hidden; /* はみ出し防止 */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	color: #FFFFFF;
+	margin: 30px;
+	background: #09C289;
+}
+
+.flex-child form {
+	height: 100%;
+	width: 100%;
+}
+
+/***************confirm関連html start*********************************************************************/
+.confirm-btn-wrapper {
+	display: flex;
+	flex-direction: row; /*横並び・左から右（デフォルト）*/
+	flex-wrap: wrap;
+	justify-content: center; /* 主軸（横方向）を中央揃え */
+	align-items: center; /* 交差軸（縦方向）を中央揃え */
+}
+
+.confirm-btn-wrapper form {
+	margin: 0 20px;
+}
+
+/***************confirm関連html end*********************************************************************/
+
+/***************mt-complete.html start*********************************************************************/
+.link-wrapper {
+	display: flex;
+	flex-wrap: wrap;        /* ★ 画面からはみ出たら折り返す */
+	justify-content: center;
+	gap: 12px;              /* リンク同士の間隔 */
+	margin-top: 20px;
+}
+
+.link-wrapper a {
+	text-decoration: underline;  /* 下線を表示 */
+	padding: 0;                  /* 余白を消す */
+	border: none;                /* 枠線を消す */
+	white-space: nowrap;    /* 文字の途中で改行させない */
+}
+/***************mt-complete.html end*********************************************************************/
+
+/***************myPage.html start*********************************************************************/
+.mypage-wrapper {
+	margin-top: 20px;
+	display: flex;
+	flex-direction: row; /*横並び・左から右（デフォルト）*/
+	flex-wrap: no-wrap;
+	justify-content: center; /* 主軸（横方向）を中央揃え */
+	align-items: stretch; /* ← 最重要！高さを揃えて伸ばす */
+	height: auto; /* ← 親の高さを内容に合わせて伸ばす */
+	width: 100%;
+	/*	背景を重ねるため*/
+	position: relative;
+	overflow-x: hidden; /*  横へのはみ出しを強制的にカット */
+	min-height: 100%;
+	height: auto; /* 重要：ページ全体の高さまで伸びる */
+}
+/* 背景を広げる疑似要素（画像の後ろに回る） */
+.mypage-wrapper::before {
+	content: "";
+	position: absolute;
+	left: 17vw;
+	right: 0;
+	top: 0;
+	bottom: 0; /* ★これで高さが常に親に一致する */
+	width: 100%;
+	/*height: 100%;  これで親の高さに連動して伸びる */
+	background: #D1DEE9;
+	z-index: 0;
+}
+
+.myimg-wrapper {
+	width: 40%;
+	position: relative;
+	z-index: 2; /* 画像を最前面にする */
+}
+
+.myimg-area {
+	display: flex;
+	justify-content: center; /* 横方向の中央揃え */
+	align-items: center; /* 縦方向の中央揃え */
+	width: 100%;
+}
+
+.myimg {
+	width: 15vw;
+	height: 15vw;
+	border-radius: 50%;
+	overflow: hidden; /* 子要素(img)が丸枠からはみ出さない */
+	border: 80px solid #9FC0DE; /* 枠の色・太さ */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 影付け（オプション） */
+	background: #FFFFFF;
+	/* て「No Image」を中央に！ */
+	display: flex;
+	justify-content: center; /* 横方向真ん中 */
+	align-items: center; /* 縦方向ど真ん中 */
+	font-size: 0.5rem;
+	color: #555;
+}
+
+.myimg img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.profile-wrapper {
+	width: 60%;
+	box-sizing: border-box; /* padding や border が幅超過しないように */
+	/*	背景を重ねるため*/
+	position: relative;
+	z-index: 1;
+	flex-grow: 1; /* ← これが最重要 */
+	display: flex;
+	flex-direction: column;
+	/*    justify-content: center; */
+	/*    height: 100%;*/
+}
+/* 背景を上に伸ばす疑似要素 */
+.profile-wrapper::before {
+	content: "";
+	position: absolute;
+	inset: 0; /* top, right, bottom, left を一括指定 */
+	/*	width: 100%;*/
+	/*	height: 100%;  上に伸ばす量 */
+	background: #D1DEE9;
+	z-index: -1;
+}
+
+.profile-contents {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+	margin-top: 10px;
+}
+
+.profile-wrapper .profile-contents:first-of-type {
+	margin-top: 20px; /* 一番上のコンテンツ（プロフィール名）だけ上のmarginを大きめにする */
+}
+
+.item-title {
+	width: 20%;
+	text-align: left;
+	color: #FFFFFF;
+}
+
+.item-contents {
+	width: 80%;
+	text-align: left;
+	/*	flex: 1 1 auto;*/
+}
+
+.item-contents.birthday {
+	display: flex;
+	flex-direction: row;
+	gap: 4px;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.item-contents  p {
+	text-align: left;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.mypg-btn-area {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+	margin-top: auto; /* 追加：これで一番下へ固定される */
+	padding-top: 20px; /* 任意：プロフィール内容との余白 */
+}
+/*******スマホ start*****************************/
+@media screen and (max-width: 767px) {
+	.mypage-wrapper {
+		flex-direction: column; /*横並び・左から右（デフォルト）*/
+	}
+	/* 背景を広げる疑似要素（画像の後ろに回る） */
+	.mypage-wrapper::before {
+
+		background: #D1DEE9;
+	}
+	.myimg-wrapper {
+		width: 100%;
+		background: #D1DEE9;
+	}
+	.myimg {
+	    margin-top: 20px;
+		width: 30vw;
+		height: 30vw;
+		border: 20px solid #9FC0DE;
+	}
+	.profile-wrapper {
+		width: 100%;
+		box-sizing: border-box; /* padding や border が幅超過しないように */
+		/*	背景を重ねるため*/
+		position: relative;
+		z-index: 1;
+		flex-grow: 1; /* ← これが最重要 */
+		display: flex;
+		flex-direction: column;
+		/*    justify-content: center; */
+		/*    height: 100%;*/
+	}
+	.profile-contents {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: flex-start;
+		margin-top: 10px;
+		margin-left: 10px;
+	}
+	.item-title {
+		width: 100%;
+
+	}
+	.item-contents {
+		text-align: center;
+	}
+	.item-contents.birthday {
+	    justify-content:center;
+	}
+	.mypg-btn-area {
+	    justify-content: center;
+	}
+	
+}
+/*******スマホ end******************************/
+
+/***************myPage.html end*********************************************************************/
+
+/***************ImageUpload.html start*********************************************************************/
+.img-up-wrapper {
+	display: flex;
+	flex-direction: row; /*横並び・左から右（デフォルト）*/
+	flex-wrap: wrap;
+	justify-content: center; /* 主軸（横方向）を中央揃え */
+	align-items: center; /* 交差軸（縦方向）を中央揃え */
+	width: 100%;
+	height: 100%;
+	margin-bottom: 30px;
+		margin-top: 30px;
+}
+
+.img-smpl-wrapper {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	background: #9FC0DE;
+}
+
+.img-smpl {
+	width: 20vw;
+	height: 20vw;
+	border-radius: 50%;
+	/*	border: 20px solid #9FC0DE; */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* 影付け（オプション） */
+	background: #FFFFFF;
+	/* て「No Image」を中央に！ */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.5rem;
+	color: #555;
+	overflow: hidden;
+		margin-bottom: 30px;
+}
+
+.img-smpl img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain; /* ←画像をはみ出さないように調整 */
+}
+
+.img-up-btn-wrapper {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+}
+
+.img-up-btn-wrapper form {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center; /* 主軸（横方向）を中央揃え */
+	align-items: center; /* 交差軸（縦方向）を中央揃え */
+	width: 100%;
+	gap: 2px; /* ボタン同士の余白 */
+}
+
+.img-up-btn-wrapper p {
+	font-size: 0.7rem;
+	margin-top: 20px;
+}
+
+/* 丸いボタンの基本デザイン */
+.circle-btn {
+	width: 10vw;
+	height: 10vw;
+	border-radius: 50%;
+	background: #80D8C3;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	cursor: pointer;
+	color: #FFFFFF;
+	font-size: 0.5rem;
+	font-weight: bold;
+	border: none;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+/* button は label と違い display:flex にする */
+button.circle-btn {
+	border: none;
+}
+
+/* hover 時 */
+.circle-btn:hover {
+	background: #09C289;
+	transform: scale(1.05);
+	transition: 0.2s;
+}
+/*******スマホ start*****************************/
+@media screen and (max-width: 767px) {
+	.img-smpl-wrapper {
+		width: 100%;
+	}
+	.img-smpl {
+		width: 30vw;
+		height: 30vw;
+	}
+	.img-up-btn-wrapper {
+		width: 100%;
+	}
+	.img-up-btn-wrapper p {
+		font-size: 0.5rem;
+	}
+	.circle-btn {
+		width: 20vw;
+		height: 20vw;
+	}
+}
+/*******スマホ end******************************/
+
+/***************ImageUpload.html end*********************************************************************/
+/***************profielEdit.html start*********************************************************************/
+.profile-edit-wrapper form {
+	margin-bottom: 10px;
+}
+
+.profile-edit-wrapper button {
+	margin-top: 10px;
+}
+
+.right-btn {
+	margin-left: auto;
+}
+
+/***************profielEdit.html end*********************************************************************/
